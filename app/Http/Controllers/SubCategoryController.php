@@ -25,7 +25,6 @@ class SubCategoryController extends Controller
         $subCategory->sub_category_name = $request->sub_category_name;
         //slug is the url friendly version of the subCategory name
         $subCategory->sub_category_slug = Str::slug($request->sub_category_name);
-        $subCategory->category_id = $request->category_id;
         $subCategory->save();
         return response()->json([
             'message' => 'SubCategory added successfully'
@@ -37,7 +36,6 @@ class SubCategoryController extends Controller
         $subCategory->sub_category_name = $request->sub_category_name;
         //slug is the url friendly version of the subCategory name
         $subCategory->sub_category_slug = Str::slug($request->sub_category_name);
-        $subCategory->category_id = $request->category_id;
         $subCategory->save();
         return response()->json([
             'message' => 'SubCategory updated successfully'
