@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\CategorySubCategory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -53,6 +55,20 @@ class CategoryController extends Controller
         $category = Category::find($id);
         return response()->json([
             'category' => $category
+        ], 200);
+    }
+    public function assignSubCategory(Request $request)
+    {
+        $category_id = $request->category_id;
+        $subcategories = $request->subcategories;
+        foreach ($subcategories as $subcategory) {
+            $categorySubCategory = new CategorySubCategory();
+            $categorySubCategory->category_id = $category_id;
+            $categorySubCategory->sub_category_id = $subcategory;
+            $categorySubCategory->save();
+        }
+        return response()->json([
+            'message' => 'Sub Category assigned successfully'
         ], 200);
     }
 }
