@@ -68,6 +68,7 @@ class CategoryController extends Controller
                 $subcategory->delete();
             }
         }
+        $subcategories = $request->subcategories;
         //assign new subcategories
         foreach ($subcategories as $subcategory) {
             $categorySubCategory = new CategorySubCategory();
