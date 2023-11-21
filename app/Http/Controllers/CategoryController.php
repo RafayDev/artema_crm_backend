@@ -61,6 +61,14 @@ class CategoryController extends Controller
     {
         $category_id = $request->category_id;
         $subcategories = $request->subcategories;
+        //delete old subcategories
+        $subcategories =CategorySubCategory::where('category_id', $category_id)->get();
+        if($subcategories){
+            foreach ($subcategories as $subcategory) {
+                $subcategory->delete();
+            }
+        }
+        //assign new subcategories
         foreach ($subcategories as $subcategory) {
             $categorySubCategory = new CategorySubCategory();
             $categorySubCategory->category_id = $category_id;
