@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,5 +37,10 @@ Route::middleware('auth:sanctum')->post('/add-sub-category', [SubCategoryControl
 Route::middleware('auth:sanctum')->post('/edit-sub-category', [SubCategoryController::class, 'editSubCategory']);
 Route::middleware('auth:sanctum')->delete('/delete-sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
 Route::middleware('auth:sanctum')->get('/sub-category/{id}', [SubCategoryController::class, 'getSubCategoryById']);
-
+//product routes
+Route::middleware('auth:sanctum')->get('/products', [ProductController::class, 'getProducts']);
+Route::middleware('auth:sanctum')->post('/add-product', [ProductController::class, 'addProduct']);
+Route::middleware('auth:sanctum')->post('/edit-product', [ProductController::class, 'editProduct']);
+Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
+Route::middleware('auth:sanctum')->get('/product/{id}', [ProductController::class, 'getProductById']);
 
