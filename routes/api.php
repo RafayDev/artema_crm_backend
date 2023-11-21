@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->post('/edit-category', [CategoryController::c
 Route::middleware('auth:sanctum')->delete('/delete-category/{id}', [CategoryController::class, 'deleteCategory']);
 Route::middleware('auth:sanctum')->get('/category/{id}', [CategoryController::class, 'getCategoryById']);
 Route::middleware('auth:sanctum')->post('/assign-sub-category', [CategoryController::class, 'assignSubCategory']);
+Route::middleware('auth:sanctum')->get('/category-sub-categories/{id}', [CategoryController::class, 'getCategorySubCategories']);
 //subCategory routes
 Route::middleware('auth:sanctum')->get('/sub-categories', [SubCategoryController::class, 'getSubCategories']);
 Route::middleware('auth:sanctum')->post('/add-sub-category', [SubCategoryController::class, 'addSubCategory']);

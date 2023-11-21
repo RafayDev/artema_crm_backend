@@ -71,4 +71,11 @@ class CategoryController extends Controller
             'message' => 'Sub Category assigned successfully'
         ], 200);
     }
+    public function getSubCategoriesByCategoryId($id)
+    {
+        $subcategories = CategorySubCategory::where('category_id', $id)->get();
+        return response()->json([
+            'subcategories' => $subcategories
+        ], 200);
+    }
 }
