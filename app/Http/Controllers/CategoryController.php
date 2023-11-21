@@ -87,4 +87,13 @@ class CategoryController extends Controller
             'subcategories' => $subcategories
         ], 200);
     }
+    public function getSubCategoriesIdsArraybyCategoryId($id)
+    {
+        $subcategories = CategorySubCategory::where('category_id', $id)->get();
+        $subcategories_ids = [];
+        foreach ($subcategories as $subcategory) {
+            array_push($subcategories_ids, $subcategory->sub_category_id);
+        }
+        return $subcategories_ids;
+    }
 }
