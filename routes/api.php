@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,4 +45,9 @@ Route::middleware('auth:sanctum')->post('/add-product', [ProductController::clas
 Route::middleware('auth:sanctum')->post('/edit-product', [ProductController::class, 'editProduct']);
 Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
 Route::middleware('auth:sanctum')->get('/product/{id}', [ProductController::class, 'getProductById']);
-
+//client routes
+Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'getClients']);
+Route::middleware('auth:sanctum')->post('/add-client', [ClientController::class, 'addClient']);
+Route::middleware('auth:sanctum')->post('/edit-client', [ClientController::class, 'editClient']);
+Route::middleware('auth:sanctum')->delete('/delete-client/{id}', [ClientController::class, 'deleteClient']);
+Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClientById']);
