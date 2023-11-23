@@ -59,8 +59,10 @@ class UserController extends Controller
             ], 401);
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
+        $role = $user->user_type;
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'role' => $role
         ], 200);
     }
     public function logout(Request $request)
