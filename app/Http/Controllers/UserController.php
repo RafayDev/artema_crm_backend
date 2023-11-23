@@ -70,4 +70,72 @@ class UserController extends Controller
             'message' => 'Successfully logged out!'
         ], 200);
     }
+    public function getUsers()
+    {
+        $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->get();
+        return response()->json([
+            'users' => $user
+        ], 200);
+    }
+    public function createUser(Request $request)
+    {
+        // if not validate return error
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'user_type' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        $user = new User();
+        $user->name = $request->name;
+        $user->user_type = $request->user_type;
+        $user->email = $request->email;
+        $user->password =  Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'message' => 'Successfully created user!'
+        ], 201);
+    }
+    public function editUser(Request $request)
+    {
+        // if not validate return error
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'user_type' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->user_type = $request->user_type;
+        if($request->password){
+            $user->password =  Hash::make($request->password);
+        }
+        $user->save();
+
+        return response()->json([
+            'message' => 'Successfully updated user!'
+        ], 200);
+    }
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([
+            'message' => 'Successfully deleted user!'
+        ], 200);
+    }
+    public function getUserById($id)
+    {
+        $user = User::find($id);
+        return response()->json([
+            'user' => $user
+        ], 200);
+    }
 }
