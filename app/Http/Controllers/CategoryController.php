@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\CategorySubCategory;
+use App\Models\UserCategory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -15,9 +16,19 @@ class CategoryController extends Controller
 {
     public function getCategories()
     {
+        $user = auth()->user();
+        if($user->user_type == 'client'){
+            $categories_array = [];
+            $user_categories = $user->categories;
+            $categories = Category::whereIn('id', $user_categories->pluck('id'))->get();
+            return response()->json([
+                'categories' => $categories,
+                // 'user' => $user
+            ], 200);
+        }
         $categories = Category::all();
         return response()->json([
-            'categories' => $categories
+            'categories' => $categories,
         ], 200);
     }
     public function addCategory(Request $request)
