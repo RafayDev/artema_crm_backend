@@ -120,9 +120,11 @@ class CategoryController extends Controller
     }
     public function getSubCategoriesByCategoryIdNoAuth($id)
     {
+        $category = Category::find($id);
         $subcategories = CategorySubCategory::with('subCategory')->where('category_id', $id)->get();
         return response()->json([
-            'subcategories' => $subcategories
+            'subcategories' => $subcategories,
+            'category' => $category
         ], 200);
     }
 }
