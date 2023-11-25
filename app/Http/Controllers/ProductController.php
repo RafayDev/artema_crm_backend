@@ -123,7 +123,7 @@ class ProductController extends Controller
     }
     public function getProductsBySubCategoryId($id)
     {
-        $products = Product::where('sub_category_id', $id)->get();
+        $products = Product::where('sub_category_id', $id)->paginate(24);
         return response()->json([
             'products' => $products
         ], 200);
