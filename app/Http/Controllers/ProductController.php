@@ -18,7 +18,7 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
-        $products = Product::with('productSizes')->paginate(8);
+        $products = Product::with('productSizes')->paginate(24);
         return response()->json([
             'products' => $products
         ], 200);
@@ -112,6 +112,20 @@ class ProductController extends Controller
         return response()->json([
             'product' => $product,
             'product_sizes' => $product_sizes
+        ], 200);
+    }
+    public function getProductsBySubCategoryIdNoAuth($id)
+    {
+        $products = Product::where('sub_category_id', $id)->get();
+        return response()->json([
+            'products' => $products
+        ], 200);
+    }
+    public function getProductsBySubCategoryId($id)
+    {
+        $products = Product::where('sub_category_id', $id)->get();
+        return response()->json([
+            'products' => $products
         ], 200);
     }
 }

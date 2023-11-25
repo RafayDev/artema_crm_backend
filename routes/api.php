@@ -31,8 +31,10 @@ Route::middleware('auth:sanctum')->post('/edit-category', [CategoryController::c
 Route::middleware('auth:sanctum')->delete('/delete-category/{id}', [CategoryController::class, 'deleteCategory']);
 Route::middleware('auth:sanctum')->get('/category/{id}', [CategoryController::class, 'getCategoryById']);
 Route::middleware('auth:sanctum')->post('/assign-sub-category', [CategoryController::class, 'assignSubCategory']);
-Route::middleware('auth:sanctum')->get('/category-sub-categories/{id}', [CategoryController::class, 'getSubCategoriesByCategoryId']);
+Route::middleware('auth:sanctum')->get('get-categories-by-user-id', [CategoryController::class, 'getSubCategoriesByCategoryId']);
 Route::middleware('auth:sanctum')->get('/category-sub-categories-array/{id}', [CategoryController::class, 'getSubCategoriesIdsArraybyCategoryId']);
+Route::get('/get-categories-by-user-id/{id}', [CategoryController::class, 'getCategoriesByUserId']);
+Route::get('/get-sub-categories-by-category-no-auth/{id}', [CategoryController::class, 'getSubCategoriesByCategoryIdNoAuth']);
 //subCategory routes
 Route::middleware('auth:sanctum')->get('/sub-categories', [SubCategoryController::class, 'getSubCategories']);
 Route::middleware('auth:sanctum')->post('/add-sub-category', [SubCategoryController::class, 'addSubCategory']);
@@ -45,6 +47,8 @@ Route::middleware('auth:sanctum')->post('/add-product', [ProductController::clas
 Route::middleware('auth:sanctum')->post('/edit-product', [ProductController::class, 'editProduct']);
 Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
 Route::middleware('auth:sanctum')->get('/product/{id}', [ProductController::class, 'getProductById']);
+Route::middleware('auth:sanctum')->get('/get-product-by-subcategory/{id}', [ProductController::class, 'getProductsBySubCategoryId']);
+Route::get('/get-product-by-subcategory-no-auth/{id}', [ProductController::class, 'getProductsBySubCategoryIdNoAuth']);
 //client routes
 Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'getClients']);
 Route::middleware('auth:sanctum')->post('/add-client', [ClientController::class, 'addClient']);

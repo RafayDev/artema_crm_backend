@@ -93,7 +93,7 @@ class CategoryController extends Controller
     }
     public function getSubCategoriesByCategoryId($id)
     {
-        $subcategories = CategorySubCategory::where('category_id', $id)->get();
+        $subcategories = CategorySubCategory::with('subCategory')->where('category_id', $id)->get();
         return response()->json([
             'subcategories' => $subcategories
         ], 200);
@@ -106,5 +106,23 @@ class CategoryController extends Controller
             array_push($subcategories_ids, $subcategory->sub_category_id);
         }
         return $subcategories_ids;
+    }
+    public function getCategoriesByUserId($id)
+    {
+        // print_r($id);
+        // die();
+        $user = User::find($id);
+        $user_categories = $user->categories;
+        $categories = Category::whereIn('id', $user_categories->pluck('id'))->get();
+        return response()->json([
+            'categories' => $categories
+        ], 200);
+    }
+    public function getSubCategoriesByCategoryIdNoAuth($id)
+    {
+        $subcategories = CategorySubCategory::with('subCategory')->where('category_id', $id)->get();
+        return response()->json([
+            'subcategories' => $subcategories
+        ], 200);
     }
 }
