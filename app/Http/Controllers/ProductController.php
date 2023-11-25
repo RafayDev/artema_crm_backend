@@ -18,7 +18,7 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
-        $products = Product::with('productSizes')->paginate(25);
+        $products = Product::with('productSizes')->paginate(8);
         return response()->json([
             'products' => $products
         ], 200);
