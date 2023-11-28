@@ -28,6 +28,15 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $user = auth()->user();
+        //check if the product is already in the cart
+        $cart = Cart::where('user_id', $user->id)->where('product_id', $request->product_id)->where('sku', $request->sku)->first();
+        if ($cart) {
+            $cart->quantity = $cart->quantity + $request->quantity;
+            $cart->save();
+            return response()->json([
+                'message' => 'Product added to cart successfully'
+            ], 200);
+        }
         $cart = new Cart();
         $cart->user_id = $user->id;
         $cart->product_id = $request->product_id;
