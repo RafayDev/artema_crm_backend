@@ -116,14 +116,14 @@ class ProductController extends Controller
     }
     public function getProductsBySubCategoryIdNoAuth($id)
     {
-        $products = Product::where('sub_category_id', $id)->paginate(24);
+        $products = Product::with('productSizes')->where('sub_category_id', $id)->paginate(24);
         return response()->json([
             'products' => $products
         ], 200);
     }
     public function getProductsBySubCategoryId($id)
     {
-        $products = Product::where('sub_category_id', $id)->paginate(24);
+        $products = Product::with('productSizes')->where('sub_category_id', $id)->paginate(24);
         return response()->json([
             'products' => $products
         ], 200);
