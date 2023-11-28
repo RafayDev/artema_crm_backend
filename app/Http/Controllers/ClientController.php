@@ -157,4 +157,12 @@ class ClientController extends Controller
             'categories' => $categories
         ], 200);
     }
+    public function getClientByToken()
+    {
+        $user = auth()->user();
+        $client = User::with('company','categories')->find($user->id);
+        return response()->json([
+            'client' => $client
+        ], 200);
+    }
 }

@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->post('/add-client', [ClientController::class,
 Route::middleware('auth:sanctum')->post('/edit-client', [ClientController::class, 'editClient']);
 Route::middleware('auth:sanctum')->delete('/delete-client/{id}', [ClientController::class, 'deleteClient']);
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClientById']);
+Route::middleware('auth:sanctum')->get('/get-client-by-token', [ClientController::class, 'getClientByToken']);
 //user routes
 Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'getUsers']);
 Route::middleware('auth:sanctum')->post('/add-user', [UserController::class, 'createUser']);
