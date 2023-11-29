@@ -18,7 +18,7 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
-        $products = Product::with('productSizes')->paginate(24);
+        $products = Product::with('productSizes')->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'products' => $products
         ], 200);
@@ -30,6 +30,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->product_description = $request->product_description;
+        $product->price = $request->product_price;
         //convert base64 to image and save it in the public folder
         $exploded = explode(',', $request->product_image);
         $decoded = base64_decode($exploded[1]);
@@ -62,6 +63,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->product_description = $request->product_description;
+        $product->price = $request->product_price;
         //convert base64 to image and save it in the public folder
         if($request->product_image)
         {
