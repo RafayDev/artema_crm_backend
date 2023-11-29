@@ -10,6 +10,7 @@ use App\Models\CategorySubCategory;
 use App\Models\Product;
 use App\Models\ProductSize;
 use App\Models\Query;
+use App\Models\QueryProduct;
 use App\Models\Cart;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Hash;
@@ -30,15 +31,17 @@ class QueryController extends Controller
     {
         $user = auth()->user();
         $carts = Cart::where('user_id', $user->id)->get();
+        $query = new Query();
+        $query->user_id = $user->id;
+        $query->save();
         foreach ($carts as $cart) {
-            $query = new Query();
-            $query->user_id = $user->id;
-            $query->product_id = $cart->product_id;
-            $query->quantity = $cart->quantity;
-            $query->sku = $cart->sku;
-            $query->size = $cart->size;
-            $query->save();
-            $cart->delete();
+            $queryProduct = new QueryProduct();
+            $queryProduct->query_id = $query->id;
+            $queryProduct->product_id = $cart->product_id;
+            $queryProduct->quantity = $cart->quantity;
+            $queryProduct->sku = $cart->sku;
+            $queryProduct->size = $cart->size;
+            $queryProduct->save();
         }
         $admins = User::where('user_type', 'admin')->orwhere('user_type','admin-user')->orwhere('user_type','manager')->get();
         foreach ($admins as $admin) {
@@ -56,6 +59,10 @@ class QueryController extends Controller
     {
         $query = Query::find($id);
         $query->delete();
+        $queryProducts = QueryProduct::where('query_id', $id)->get();
+        foreach ($queryProducts as $queryProduct) {
+            $queryProduct->delete();
+        }
         return response()->json([
             'message' => 'Qrf deleted successfully'
         ], 200);

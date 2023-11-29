@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notiications', function (Blueprint $table) {
+        Schema::create('query_products', function (Blueprint $table) {
             $table->id();
-            $table->Integer('from_user_id');
-            $table->Integer('to_user_id');
-            $table->string('message');
-            $table->integer('is_read')->default(0);
+            $table->Integer('query_id');
+            $table->Integer('product_id');
+            $table->string('quantity');
+            $table->string('sku');
+            $table->string('size');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notiications');
+        Schema::dropIfExists('query_products');
     }
 };

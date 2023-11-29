@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class QueryProduct extends Model
 {
     use HasFactory;
-    protected $table = "notiications";
+    function getProduct(){
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }
