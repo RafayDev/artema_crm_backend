@@ -8,6 +8,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\QueryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -67,3 +68,7 @@ Route::middleware('auth:sanctum')->get('/user/{id}', [UserController::class, 'ge
 Route::middleware('auth:sanctum')->get('/cart', [CartController::class, 'getCart']);
 Route::middleware('auth:sanctum')->post('/add-to-cart', [CartController::class, 'addToCart']);
 Route::middleware('auth:sanctum')->delete('/delete-from-cart/{id}', [CartController::class, 'deleteFromCart']);
+//query routes
+Route::middleware('auth:sanctum')->get('/queries', [QueryController::class, 'getQueries']);
+Route::middleware('auth:sanctum')->post('/add-query', [QueryController::class, 'addQuery']);
+Route::middleware('auth:sanctum')->delete('/delete-query/{id}', [QueryController::class, 'deleteQuery']);
