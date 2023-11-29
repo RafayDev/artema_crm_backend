@@ -42,6 +42,7 @@ class QueryController extends Controller
             $queryProduct->sku = $cart->sku;
             $queryProduct->size = $cart->size;
             $queryProduct->save();
+            $cart->delete();
         }
         $admins = User::where('user_type', 'admin')->orwhere('user_type','admin-user')->orwhere('user_type','manager')->get();
         foreach ($admins as $admin) {
