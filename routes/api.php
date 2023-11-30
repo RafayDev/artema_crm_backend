@@ -70,5 +70,5 @@ Route::middleware('auth:sanctum')->post('/add-to-cart', [CartController::class, 
 Route::middleware('auth:sanctum')->delete('/delete-from-cart/{id}', [CartController::class, 'deleteFromCart']);
 //query routes
 Route::middleware('auth:sanctum')->get('/queries', [QueryController::class, 'getQueries']);
-Route::middleware('auth:sanctum')->post('/add-query', [QueryController::class, 'addQuery']);
+Route::middleware('auth:sanctum')->get('/add-query', [QueryController::class, 'addQuery']);
 Route::middleware('auth:sanctum')->delete('/delete-query/{id}', [QueryController::class, 'deleteQuery']);

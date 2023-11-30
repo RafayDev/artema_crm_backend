@@ -29,7 +29,7 @@ class QueryController extends Controller
     }
     public function addQuery(Request $request)
     {
-        $user = $request->user();
+        $user = auth()->user();
         $carts = Cart::where('user_id', $user->id)->get();
         $query = new Query();
         $query->user_id = $user->id;
