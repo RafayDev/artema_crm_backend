@@ -32,8 +32,9 @@ class InvoiceController extends Controller
     public function addInvoice(Request $request)
     {
         $user = auth()->user();
+        $query = Query::find($request->qrf_id);
         $invoice = new Invoice();
-        $invoice->user_id = $user->id;
+        $invoice->user_id = $query->user_id;
         $invoice->query_id = $request->qrf_id;
         $invoice->frieght_charges = $request->frieght_charges;
         $invoice->sales_tax = $request->sales_tax;
@@ -52,6 +53,12 @@ class InvoiceController extends Controller
             $invoiceProduct->total = $invoice_product['total'];
             $invoiceProduct->save();
         }
+        //send notification to client
+        $notification = new Notification();
+        $notification->from_user_id = $user->id;
+        $notification->to_user_id = $invoice->user_id;
+        $notification->message = "Your Quotation are now converted into invoice.";
+        $notification->save();
         return response()->json([
             'message' => 'Invoice created successfully'
         ], 200);
