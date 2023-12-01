@@ -141,7 +141,7 @@
         <h2>{{$company->company_name}}</h2>
         <h3>{{$query->created_at->format('d-m-Y')}}</h3>
 
-        <table style="font-size:14px; height:100%">
+        <table style="font-size:14px;">
             <thead>
                 <tr>
                     <th>#</th>
