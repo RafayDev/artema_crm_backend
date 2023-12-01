@@ -6,129 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotation</title>
     <style>
-        @page {
-            margin: 0px;
-            padding: 0px;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 100px;
-            position: relative;
-        }
+    @page {
+        margin: 0px;
+        padding: 0px;
+    }
 
-        .page-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('./logos/{{$company->company_logo}}');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            z-index: -2;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        padding-top: 100px;
+        position: relative;
+    }
 
-        .opacity-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            opacity: 0.85;
-            pointer-events: none;
-            z-index: -1;
-        }
+    .page-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('./logos/{{$company->company_logo}}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        z-index: -2;
+    }
 
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eee;
-            padding: 10px;
-            z-index: 1000;
-        }
+    .opacity-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        opacity: 0.85;
+        pointer-events: none;
+        z-index: -1;
+    }
 
-        .logo img {
-            width: 140px;
-            margin-left: 20px; 
-            padding-top: 120px;
-            padding-bottom: 130px;
-        }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #eee;
+        padding: 10px;
+        z-index: 1000;
+    }
 
-        .container {
-            width: 90%;
-            margin: 2em auto;
-        }
+    .logo img {
+        width: 140px;
+        margin-left: 20px;
+        padding-top: 120px;
+        padding-bottom: 130px;
+    }
 
-        h1, h2 {
-            margin: 0.5em 0;
-        }
+    .container {
+        width: 90%;
+        margin: 2em auto;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 24px;
-        }
+    h1,
+    h2 {
+        margin: 0.5em 0;
+    }
 
-        h2 {
-            text-align: center;
-            font-size: 20px;
-            color: #666;
-        }
+    h1 {
+        text-align: center;
+        font-size: 24px;
+    }
 
-        h3 {
-            text-align: right;
-            font-size: 16px;
-            color: #999;
-        }
+    h2 {
+        text-align: center;
+        font-size: 20px;
+        color: #666;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2em;
-            page-break-inside: auto;
-        }
+    h3 {
+        text-align: right;
+        font-size: 16px;
+        color: #999;
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5em 1em;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2em;
+    }
 
-        th {
-            background-color: #f5f5f5;
-        }
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 0.5em 1em;
+    }
 
-        td {
-            text-align: center;
-        }
+    th {
+        background-color: #f5f5f5;
+    }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 10px 0;
-            z-index: 999;
-            page-break-before: auto;
-        }
+    td {
+        text-align: center;
+    }
 
-        .footer-content {
-            width: 100%;
-            margin: 0 auto;
-            color: #ecf0f1;
-        }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 10px 0;
+        z-index: 999;
+    }
 
-        .footer-content p {
-            text-align: center;
-            margin: 10px 0;
-        }
+    .footer-content {
+        width: 100%;
+        margin: 0 auto;
+        color: #ecf0f1;
+    }
+
+    .footer-content p {
+        text-align: center;
+        margin: 10px 0;
+    }
     </style>
 </head>
 
@@ -137,11 +138,11 @@
     <div class="opacity-layer"></div>
 
     <div class="header">
-    <div class="logo">
-        <img src="./logos/{{$company->company_logo}}" alt="Company Logo">
+        <div class="logo">
+            <img src="./logos/{{$company->company_logo}}" alt="Company Logo">
+        </div>
     </div>
-    </div>
-    
+
     <div class="container">
         <h1>Quotation</h1>
         <h2>{{$company->company_name}}</h2>
