@@ -16,13 +16,13 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class QueryController extends Controller
 {
     public function getQueries()
     {
-        $queries = Query::orderBy('id', 'desc')->paginate(24);
+        $queries = Query::with('user.company')->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'qrfs' => $queries
         ], 200);
@@ -67,5 +67,24 @@ class QueryController extends Controller
         return response()->json([
             'message' => 'Qrf deleted successfully'
         ], 200);
+    }
+    public function getQueryProducts($id)
+    {
+        $queryProducts = QueryProduct::where('query_id', $id)->get();
+        return response()->json([
+            'queryProducts' => $queryProducts
+        ], 200);
+    }
+    public function viewQuery($id)
+    {
+        $query = Query::find($id);
+        $queryProducts = QueryProduct::where('query_id', $id)->get();
+        $user = User::find($query->user_id);
+        $company = $user->company;
+        // print_r($company->company_logo);
+        // die();
+        $data = compact('query', 'queryProducts', 'user', 'company');
+        $pdf = PDF::loadView('pdf.query', $data);
+        return $pdf->stream();
     }
 }

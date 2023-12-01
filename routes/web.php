@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QueryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/view-query/{id}', [QueryController::class, 'viewQuery']);
 Route::get('unauthorized', function () {
     return response()->json([
         'message' => 'Unauthorized!'
