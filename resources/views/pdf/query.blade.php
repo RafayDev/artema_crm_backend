@@ -163,6 +163,13 @@
                     <td>{{$query_product->size}}</td>
                     <td>{{$query_product->quantity}}</td>
                 </tr>
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$query_product->product->product_name}}</td>
+                    <td>{{$query_product->sku}}</td>
+                    <td>{{$query_product->size}}</td>
+                    <td>{{$query_product->quantity}}</td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
