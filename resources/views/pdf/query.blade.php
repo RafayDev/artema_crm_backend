@@ -168,6 +168,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div style="text-align:right; margin-top:50px;">
+        </div>
     </div>
 
     <div class="footer">
