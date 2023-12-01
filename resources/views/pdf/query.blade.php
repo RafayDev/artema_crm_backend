@@ -61,7 +61,7 @@
         }
 
         .container {
-            width: 95%;
+            width: 90%;
             margin: 2em auto;
         }
 
