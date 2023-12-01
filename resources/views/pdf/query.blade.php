@@ -58,6 +58,8 @@
         .header img {
             width: 140px;
             margin-left: 20px; 
+            padding-top: 120px;
+            padding-bottom: 130px;
         }
 
         .container {
