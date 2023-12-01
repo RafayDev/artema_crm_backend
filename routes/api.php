@@ -9,6 +9,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\InvoiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -76,3 +78,8 @@ Route::middleware('auth:sanctum')->get('/query-products/{id}', [QueryController:
 //notification routes
 Route::middleware('auth:sanctum')->get('/notifications', [NotificationController::class, 'getNotifications']);
 Route::middleware('auth:sanctum')->get('/mark-all-as-read', [NotificationController::class, 'markAllAsRead']);
+//invoice routes
+Route::middleware('auth:sanctum')->get('/invoices', [InvoiceController::class, 'getInvoices']);
+Route::middleware('auth:sanctum')->post('/add-invoice', [InvoiceController::class, 'addInvoice']);
+Route::middleware('auth:sanctum')->delete('/delete-invoice/{id}', [InvoiceController::class, 'deleteInvoice']);
+Route::middleware('auth:sanctum')->get('/invoice-products/{id}', [InvoiceController::class, 'getInvoiceProducts']);
