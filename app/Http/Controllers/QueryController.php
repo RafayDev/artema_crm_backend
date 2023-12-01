@@ -70,7 +70,7 @@ class QueryController extends Controller
     }
     public function getQueryProducts($id)
     {
-        $queryProducts = QueryProduct::where('query_id', $id)->get();
+        $queryProducts = QueryProduct::with('product')->where('query_id', $id)->get();
         return response()->json([
             'queryProducts' => $queryProducts
         ], 200);

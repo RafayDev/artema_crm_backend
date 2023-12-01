@@ -72,3 +72,7 @@ Route::middleware('auth:sanctum')->delete('/delete-from-cart/{id}', [CartControl
 Route::middleware('auth:sanctum')->get('/queries', [QueryController::class, 'getQueries']);
 Route::middleware('auth:sanctum')->get('/add-query', [QueryController::class, 'addQuery']);
 Route::middleware('auth:sanctum')->delete('/delete-query/{id}', [QueryController::class, 'deleteQuery']);
+Route::middleware('auth:sanctum')->get('/query-products/{id}', [QueryController::class, 'getQueryProducts']);
+//notification routes
+Route::middleware('auth:sanctum')->get('/notifications', [NotificationController::class, 'getNotifications']);
+Route::middleware('auth:sanctum')->get('/mark-all-as-read', [NotificationController::class, 'markAllAsRead']);
