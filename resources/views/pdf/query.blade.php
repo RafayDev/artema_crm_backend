@@ -55,10 +55,7 @@
             z-index: 1000;
         }
 
-        .header img {
-            position: fixed;
-            top: 5;
-            left: 10;
+        .logo img {
             width: 140px;
             margin-left: 20px; 
             padding-top: 120px;
@@ -140,7 +137,9 @@
     <div class="opacity-layer"></div>
 
     <div class="header">
+    <div class="logo">
         <img src="./logos/{{$company->company_logo}}" alt="Company Logo">
+    </div>
     </div>
     
     <div class="container">
@@ -171,9 +170,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div style="text-align:right; margin-top:100px;">
-        <p><strong>Total:</strong> fsdkfjasdkjfkas<br>
-    dfjdkfjasdkjfksjdka</p>
+        <div style="text-align:right; margin-top:100px;">>
         </div>
     </div>
 
