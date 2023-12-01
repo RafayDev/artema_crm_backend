@@ -63,6 +63,7 @@
         .container {
             width: 90%;
             margin: 2em auto;
+            height: 95%;
         }
 
         h1, h2 {
