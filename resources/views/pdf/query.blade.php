@@ -169,6 +169,8 @@
             </tbody>
         </table>
         <div style="text-align:right; margin-top:50px;">
+        <p><strong>Total:</strong> fsdkfjasdkjfkas<br>
+    dfjdkfjasdkjfksjdka</p>
         </div>
     </div>
 
