@@ -90,6 +90,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 2em;
+            page-break-inside: auto;
         }
 
         th, td {
@@ -113,6 +114,7 @@
             background-color: #2c3e50;
             padding: 20px 0;
             z-index: 999;
+            page-break-before: always;
         }
 
         .footer-content {
