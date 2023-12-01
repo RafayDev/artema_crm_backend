@@ -168,7 +168,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div style="text-align:right; margin-top:50px;">
+        <div style="text-align:right; margin-top:100px;">
         <p><strong>Total:</strong> fsdkfjasdkjfkas<br>
     dfjdkfjasdkjfksjdka</p>
         </div>
