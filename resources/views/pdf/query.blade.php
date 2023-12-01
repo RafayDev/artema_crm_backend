@@ -56,6 +56,9 @@
         }
 
         .header img {
+            position: fixed;
+            top: 5;
+            left: 10;
             width: 140px;
             margin-left: 20px; 
             padding-top: 120px;
