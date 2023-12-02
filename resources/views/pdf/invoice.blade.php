@@ -206,7 +206,7 @@
                     </tr>
                     <tr class="total-row">
                         <td colspan="6">Freight Charges($)</td>
-                        <td>{{$invoice->freight_charges}} $</td>
+                        <td>{{$invoice->frieght_charges}} $</td>
                     </tr>
                     <tr class="total-row">
                         <td colspan="6">Total ($)</td>
