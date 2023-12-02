@@ -25,8 +25,10 @@ class NotificationController extends Controller
     {
         $user = auth()->user();
         $notifications = Notification::where('to_user_id', $user->id)->where('is_read',0)->orderBy('id', 'desc')->get();
+        $count = Notification::where('to_user_id', $user->id)->where('is_read',0)->count();
         return response()->json([
-            'notifications' => $notifications
+            'notifications' => $notifications,
+            'count' => $count
         ], 200);
     }
     public function markAllAsRead()
