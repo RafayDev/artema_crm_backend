@@ -24,7 +24,7 @@ class NotificationController extends Controller
     public function getNotifications()
     {
         $user = auth()->user();
-        $notifications = Notification::where('to_user_id', $user->id)->where('is_read',0)->orderBy('id', 'desc')->paginate(24);
+        $notifications = Notification::where('to_user_id', $user->id)->where('is_read',0)->orderBy('id', 'desc')->get();
         return response()->json([
             'notifications' => $notifications
         ], 200);
