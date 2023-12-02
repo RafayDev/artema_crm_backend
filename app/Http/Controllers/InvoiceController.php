@@ -88,7 +88,7 @@ class InvoiceController extends Controller
         $invoiceProducts = InvoiceProduct::with('product')->where('invoice_id', $id)->get();
         $user = User::find($invoice->user_id);
         $company = $user->company;
-        $pdf = PDF::loadView('invoice', compact('invoice', 'invoiceProducts', 'company', 'user'));
+        $pdf = PDF::loadView('pdf.invoice', compact('invoice', 'invoiceProducts', 'company', 'user'));
         return $pdf->stream();
     }
 }
