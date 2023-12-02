@@ -140,4 +140,28 @@ class UserController extends Controller
             'user' => $user
         ], 200);
     }
+    public function registerClientUser(Request $request)
+    {
+        $company_id = User::find($request->user_id)->company->id;
+        $user =  new User();
+        $user->name = $request->first_name . ' ' . $request->last_name;
+        $user->user_type = 'client_user';
+        $user->email = $request->email;
+        $user->password =  Hash::make($request->password);
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->company_id = $company_id;
+        $user->save();
+        return response()->json([
+            'message' => 'Successfully created user!'
+        ], 201);
+    }
+    public function getClientUsers()
+    {
+        $user = auth()->user();
+        $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->get();
+        return response()->json([
+            'users' => $users
+        ], 200);
+    }
 }
