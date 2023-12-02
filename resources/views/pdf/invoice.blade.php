@@ -159,7 +159,7 @@
                         {{$company->company_phone}}<br>
 
                         <strong>Address:</strong>
-                        {{$icompany->company_address}}
+                        {{$company->company_address}}
                     </td>
                     <td width="50%" style="text-align: right;">
                         <strong>Date:</strong>
