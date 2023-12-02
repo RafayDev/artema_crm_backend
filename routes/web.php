@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/view-query/{id}', [QueryController::class, 'viewQuery']);
+Route::get('/view-invoice/{id}', [InvoiceController::class, 'viewInvoice']);
 Route::get('unauthorized', function () {
     return response()->json([
         'message' => 'Unauthorized!'
