@@ -54,6 +54,7 @@ Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductContro
 Route::middleware('auth:sanctum')->get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::middleware('auth:sanctum')->get('/get-product-by-subcategory/{id}', [ProductController::class, 'getProductsBySubCategoryId']);
 Route::get('/get-product-by-subcategory-no-auth/{id}', [ProductController::class, 'getProductsBySubCategoryIdNoAuth']);
+Route::post('/search-products', [ProductController::class, 'searchProducts']);
 //client routes
 Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'getClients']);
 Route::middleware('auth:sanctum')->post('/add-client', [ClientController::class, 'addClient']);

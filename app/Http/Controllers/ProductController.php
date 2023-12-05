@@ -130,4 +130,25 @@ class ProductController extends Controller
             'products' => $products
         ], 200);
     }
+    public function searchProducts(Request $request)
+    {
+        $search = $request->search;
+        if ($search == "") {
+            return redirect()->back();
+        }
+        //if search's first charchter is number search in product sizes table
+        if (is_numeric($search[0])) {
+            $product_sizes = ProductSize::where('sku', $search)->get();
+            $products = [];
+            foreach ($product_sizes as $product_size) {
+                $product = Product::find($product_size->product_id);
+                array_push($products, $product);
+            }
+        } else {
+            $products = Product::where('description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
+        }
+        return response()->json([
+            'products' => $products
+        ], 200);
+    }
 }
