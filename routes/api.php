@@ -11,6 +11,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ClientQueryContoller;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -86,3 +87,8 @@ Route::middleware('auth:sanctum')->get('/invoice-products/{id}', [InvoiceControl
 //client user routes
 Route::middleware('auth:sanctum')->get('/client-users', [UserController::class, 'getClientUsers']);
 Route::post('/add-client-user', [UserController::class, 'registerClientUser']);
+//client query routes
+Route::middleware('auth:sanctum')->get('/client-queries', [ClientQueryContoller::class, 'getClientQueries']);
+Route::middleware('auth:sanctum')->post('/add-client-query', [ClientQueryContoller::class, 'addClientQuery']);
+Route::middleware('auth:sanctum')->delete('/delete-client-query/{id}', [ClientQueryContoller::class, 'deleteClientQuery']);
+Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQueryContoller::class, 'getClientQueryProducts']);
