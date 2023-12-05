@@ -89,6 +89,6 @@ Route::middleware('auth:sanctum')->get('/client-users', [UserController::class, 
 Route::post('/add-client-user', [UserController::class, 'registerClientUser']);
 //client query routes
 Route::middleware('auth:sanctum')->get('/client-queries', [ClientQueryContoller::class, 'getClientQueries']);
-Route::middleware('auth:sanctum')->post('/add-client-query', [ClientQueryContoller::class, 'addClientQuery']);
+Route::middleware('auth:sanctum')->get('/add-client-query', [ClientQueryContoller::class, 'addClientQuery']);
 Route::middleware('auth:sanctum')->delete('/delete-client-query/{id}', [ClientQueryContoller::class, 'deleteClientQuery']);
 Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQueryContoller::class, 'getClientQueryProducts']);
