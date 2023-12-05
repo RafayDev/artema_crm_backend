@@ -53,6 +53,8 @@ class InvoiceController extends Controller
             $invoiceProduct->total = $invoice_product['total'];
             $invoiceProduct->save();
         }
+        $query->status = 'approved';
+        $query->save();
         //send notification to client
         $notification = new Notification();
         $notification->from_user_id = $user->id;
