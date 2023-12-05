@@ -164,4 +164,28 @@ class UserController extends Controller
             'users' => $users
         ], 200);
     }
+    public function editClientUser(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->name = $request->first_name . ' ' . $request->last_name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        if($request->password){
+            $user->password =  Hash::make($request->password);
+        }
+        $user->save();
+        return response()->json([
+            'message' => 'Successfully updated user!'
+        ], 200);
+    }
+    public function deleteClientUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([
+            'message' => 'Successfully deleted user!'
+        ], 200);
+    }
+    
 }

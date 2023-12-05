@@ -86,6 +86,8 @@ Route::middleware('auth:sanctum')->delete('/delete-invoice/{id}', [InvoiceContro
 Route::middleware('auth:sanctum')->get('/invoice-products/{id}', [InvoiceController::class, 'getInvoiceProducts']);
 //client user routes
 Route::middleware('auth:sanctum')->get('/client-users', [UserController::class, 'getClientUsers']);
+Route::middleware('auth:sanctum')->post('/edit-client-user', [UserController::class, 'editClientUser']);
+Route::middleware('auth:sanctum')->delete('/delete-client-user/{id}', [UserController::class, 'deleteUser']);
 Route::post('/add-client-user', [UserController::class, 'registerClientUser']);
 //client query routes
 Route::middleware('auth:sanctum')->get('/client-queries', [ClientQueryContoller::class, 'getClientQueries']);
