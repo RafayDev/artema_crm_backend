@@ -138,14 +138,14 @@ class ProductController extends Controller
         }
         //if search's first charchter is number search in product sizes table
         if (is_numeric($search[0])) {
-            $product_sizes = ProductSize::where('sku', $search)->get();
+            $product_sizes = ProductSize::where('product_sku', $search)->get();
             $products = [];
             foreach ($product_sizes as $product_size) {
                 $product = Product::find($product_size->product_id);
                 array_push($products, $product);
             }
         } else {
-            $products = Product::where('description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
+            $products = Product::where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
         }
         return response()->json([
             'products' => $products
