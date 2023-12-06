@@ -141,11 +141,11 @@ class ProductController extends Controller
             $product_sizes = ProductSize::where('product_sku', $search)->get();
             $products = [];
             foreach ($product_sizes as $product_size) {
-                $product = Product::find($product_size->product_id);
+                $product = Product::with('productSizes')->find($product_size->product_id);
                 array_push($products, $product);
             }
         } else {
-            $products = Product::where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
+            $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
         }
         return response()->json([
             'products' => $products
