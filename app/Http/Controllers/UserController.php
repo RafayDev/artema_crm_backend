@@ -143,6 +143,12 @@ class UserController extends Controller
     public function registerClientUser(Request $request)
     {
         $company_id = User::find($request->user_id)->company->id;
+        $email = User::where('email',$request->email)->where('company_id',$company_id)->first();
+        if($email){
+            return response()->json([
+                'message' => 'Email already exists!'
+            ], 422);
+        }
         $user =  new User();
         $user->name = $request->first_name . ' ' . $request->last_name;
         $user->user_type = 'client_user';
