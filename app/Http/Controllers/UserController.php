@@ -196,10 +196,10 @@ class UserController extends Controller
     public function activeUnactiveUser($id)
     {
         $user = User::find($id);
-        if($user->active == 1){
-            $user->active = 0;
+        if($user->is_active == 1){
+            $user->is_active = 0;
         }else{
-            $user->active = 1;
+            $user->is_active = 1;
         }
         $user->save();
         return response()->json([
