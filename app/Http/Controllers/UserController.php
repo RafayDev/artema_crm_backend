@@ -58,6 +58,11 @@ class UserController extends Controller
                 'message' => 'Wrong password!'
             ], 401);
         }
+        if ($user->is_active == 0) {
+            return response()->json([
+                'message' => 'User is not active!'
+            ], 401);
+        }
         $token = $user->createToken('my-app-token')->plainTextToken;
         $role = $user->user_type;
         return response()->json([
