@@ -193,5 +193,17 @@ class UserController extends Controller
             'message' => 'Successfully deleted user!'
         ], 200);
     }
-    
+    public function activeUnactiveUser($id)
+    {
+        $user = User::find($id);
+        if($user->active == 1){
+            $user->active = 0;
+        }else{
+            $user->active = 1;
+        }
+        $user->save();
+        return response()->json([
+            'message' => 'Successfully updated user!'
+        ], 200);
+    }
 }

@@ -68,6 +68,7 @@ Route::middleware('auth:sanctum')->post('/add-user', [UserController::class, 'cr
 Route::middleware('auth:sanctum')->post('/edit-user', [UserController::class, 'editUser']);
 Route::middleware('auth:sanctum')->delete('/delete-user/{id}', [UserController::class, 'deleteUser']);
 Route::middleware('auth:sanctum')->get('/user/{id}', [UserController::class, 'getUserById']);
+Route::middleware('auth:sanctum')->get('/active-unactive-user/{id}', [UserController::class, 'activeUnactiveUser']);
 //cart routes
 Route::middleware('auth:sanctum')->get('/cart', [CartController::class, 'getCart']);
 Route::middleware('auth:sanctum')->post('/add-to-cart', [CartController::class, 'addToCart']);
