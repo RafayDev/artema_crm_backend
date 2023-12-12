@@ -169,6 +169,7 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->company_id = $company_id;
+        $user->is_active = 0;
         if($user_from){
             $user->user_from = $user_from;
         }
@@ -180,7 +181,7 @@ class UserController extends Controller
     public function getClientUsers()
     {
         $user = auth()->user();
-        $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->paginate(24);
+        $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'users' => $users
         ], 200);
