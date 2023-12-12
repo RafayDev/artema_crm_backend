@@ -13,6 +13,7 @@ use App\Models\ClientQuery;
 use App\Models\ClientQueryProduct;
 use App\Models\Cart;
 use App\Models\Notification;
+use App\Models\Company;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -71,5 +72,14 @@ class ClientQueryContoller extends Controller
             'client_query_products' => $client_query_products
         ], 200);
     }
-
+    public function viewClientQuery($id)
+    {
+        $query = ClientQuery::with('user.company')->find($id);
+        $query_products = ClientQueryProduct::with('product')->where('client_query_id', $id)->get();
+        $user = User::find($query->user_id);
+        $company = Company::find($query->company_id);
+        $data = compact('query', 'queryProducts', 'user', 'company');
+        $pdf = PDF::loadView('pdf.client_query', $data);
+        return $pdf->stream();
+    }
 }
