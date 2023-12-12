@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\ClientQueryController;
+use App\Http\Controllers\ClientQueryContoller;
 
 /*
 |--------------------------------------------------------------------------
