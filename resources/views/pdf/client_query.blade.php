@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotation</title>
+    <title>Inquiry</title>
     <style>
         @page {
             margin: 0px;
@@ -125,6 +125,18 @@
             text-align: center;
             margin: 10px 0;
         }
+        .invoice-header {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+    .invoice-header td {
+        vertical-align: top;
+        padding: 10px;
+        font-size: 14px;
+        color: #666;
+        border: none;
+    }
     </style>
 </head>
 
@@ -137,9 +149,32 @@
     </div>
     
     <div class="container">
-        <h1>Quotation</h1>
+        <h1>Inquiry</h1>
         <h2>{{$company->company_name}}</h2>
-        <h3>{{$query->created_at->format('d-m-Y')}}</h3>
+        <table class="invoice-header">
+            <tbody>
+                <tr>
+                    <td width="50%">
+
+                        <strong>Client Name:</strong>
+                        {{$user->name}}<br>
+
+                        <strong>Email:</strong>
+                        {{$user->email}}<br>
+
+                        <strong>Phone:</strong>
+                        {{$user->phone}}<br>
+
+                        <strong>Address:</strong>
+                        {{$user->address}}
+                    </td>
+                    <td width="50%" style="text-align: right;">
+                        <strong>Date:</strong>
+                        {{$query->created_at->format('d-m-Y')}}<br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <table style="font-size:14px;">
             <thead>
