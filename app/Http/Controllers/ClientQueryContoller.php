@@ -78,7 +78,8 @@ class ClientQueryContoller extends Controller
         $queryProducts = ClientQueryProduct::with('product')->where('client_query_id', $id)->get();
         $user = User::find($query->user_id);
         $company = Company::find($query->company_id);
-        $data = compact('query', 'queryProducts', 'user', 'company');
+        $client = User::where('company_id',$company->id)->where('user_type','client')->first();
+        $data = compact('query', 'queryProducts', 'user', 'company','client');
         $pdf = PDF::loadView('pdf.client_query', $data);
         return $pdf->stream();
     }

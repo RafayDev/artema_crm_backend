@@ -205,7 +205,7 @@
     <div class="footer">
         <div class="footer-content">
             <p><strong>Company Address:</strong>{{$company->company_address}}</p>
-            <p><strong>Email:</strong> {{$user->email}}</p>
+            <p><strong>Email:</strong> {{$client->email}}</p>
             <p><strong>Phone:</strong> {{$company->company_phone}}</p>
             <p style="font-size:12px; text-align:right;">System Generated</p>
         </div>
