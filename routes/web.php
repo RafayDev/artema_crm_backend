@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('/view-query/{id}', [QueryController::class, 'viewQuery']);
 Route::get('/view-invoice/{id}', [InvoiceController::class, 'viewInvoice']);
-Route::get('/view-client-query/{id}', [ClientQueryController::class, 'viewClientQuery']);
+Route::get('/view-client-query/{id}', [ClientQueryContoller::class, 'viewClientQuery']);
 Route::get('unauthorized', function () {
     return response()->json([
         'message' => 'Unauthorized!'
