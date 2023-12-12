@@ -154,7 +154,7 @@
         <table class="invoice-header">
             <tbody>
                 <tr>
-                    <td width="50%">
+                    <td width="50%" style="text-align: left;">
 
                         <strong>Client Name:</strong>
                         {{$user->name}}<br>
