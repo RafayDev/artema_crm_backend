@@ -63,6 +63,12 @@ class UserController extends Controller
                 'message' => 'User is not active!'
             ], 401);
         }
+        if($user->user_form == "web")
+        {
+            return response()->json([
+                'message' => 'Authentication failed!'
+            ], 401);
+        }
         $token = $user->createToken('my-app-token')->plainTextToken;
         $role = $user->user_type;
         return response()->json([
