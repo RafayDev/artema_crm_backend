@@ -149,6 +149,7 @@ class UserController extends Controller
     {
         $company_id = User::find($request->user_id)->company->id;
         $email = User::where('email',$request->email)->where('company_id',$company_id)->first();
+        $user_from = $request->user_from;
         if($email){
             return response()->json([
                 'message' => 'Email already exists!'
@@ -162,6 +163,9 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->company_id = $company_id;
+        if($user_from){
+            $user->user_from = $user_from;
+        }
         $user->save();
         return response()->json([
             'message' => 'Successfully created user!'
