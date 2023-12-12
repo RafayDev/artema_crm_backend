@@ -75,7 +75,7 @@ class ClientQueryContoller extends Controller
     public function viewClientQuery($id)
     {
         $query = ClientQuery::with('user.company')->find($id);
-        $query_products = ClientQueryProduct::with('product')->where('client_query_id', $id)->get();
+        $queryProducts = ClientQueryProduct::with('product')->where('client_query_id', $id)->get();
         $user = User::find($query->user_id);
         $company = Company::find($query->company_id);
         $data = compact('query', 'queryProducts', 'user', 'company');
