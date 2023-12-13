@@ -80,7 +80,7 @@ class ClientInvoiceController extends Controller
     }
     public function viewClientInvoice($id)
     {
-        $client_invoice = ClientInvoice::with('user.company')->find($id);
+        $client_invoice = ClientInvoice::find($id);
         print_r($client_invoice);
         die();
         $client_invoice_products = ClientInvoiceProduct::with('product')->where('client_invoice_id', $id)->get();
