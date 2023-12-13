@@ -44,7 +44,7 @@ class ClientInvoiceController extends Controller
         $client_invoice->sub_total = $request->sub_total;
         $client_invoice->total = $request->sub_total + $request->frieght_charges + $request->sales_tax;
         $client_invoice->save();
-        $client_invoice_products = $request->client_invoice_products;
+        $client_invoice_products = $request->invoice_products;
         foreach ($client_invoice_products as $client_invoice_product) {
             $client_invoiceProduct = new ClientInvoiceProduct();
             $client_invoiceProduct->client_invoice_id = $client_invoice->id;
