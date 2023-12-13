@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ClientQueryContoller;
+use App\Http\Controllers\ClientInvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 Route::get('/view-query/{id}', [QueryController::class, 'viewQuery']);
 Route::get('/view-invoice/{id}', [InvoiceController::class, 'viewInvoice']);
 Route::get('/view-client-query/{id}', [ClientQueryContoller::class, 'viewClientQuery']);
+Route::get('/view-client-invoice/{id}', [ClientInvoiceController::class, 'viewClientInvoice']);
 Route::get('unauthorized', function () {
     return response()->json([
         'message' => 'Unauthorized!'
