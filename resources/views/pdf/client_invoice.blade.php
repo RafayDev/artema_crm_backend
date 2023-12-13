@@ -197,8 +197,8 @@
                     <td>{{$invoice_product->sku}}</td>
                     <td>{{$invoice_product->size}}</td>
                     <td>{{$invoice_product->quantity}}</td>
-                    <td>{{$invoice_product->price}}</td>
-                    <td>{{$invoice_product->total}}</td>
+                    <td>{{$invoice_product->price}} ($)</td>
+                    <td>{{$invoice_product->total}} ($)</td>
                 </tr>
                 @endforeach
                 <tr class="total-row">
