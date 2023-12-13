@@ -34,11 +34,11 @@ class ClientInvoiceController extends Controller
     public function addClientInvoice(Request $request)
     {
         $user = auth()->user();
-        $client_query = ClientQuery::where('id',$request->client_query_id)->first();
+        $client_query = ClientQuery::where('id',$request->qrf_id)->first();
         $client_invoice = new ClientInvoice();
         $client_invoice->user_id = $user->id;
         $client_invoice->company_id = $user->company_id;
-        $client_invoice->client_query_id = $request->client_query_id;
+        $client_invoice->client_query_id = $request->qrf_id;
         $client_invoice->frieght_charges = $request->frieght_charges;
         $client_invoice->sales_tax = $request->sales_tax;
         $client_invoice->sub_total = $request->sub_total;
