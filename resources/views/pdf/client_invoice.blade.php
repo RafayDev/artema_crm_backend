@@ -184,6 +184,8 @@
                     <th>SKU</th>
                     <th>Size</th>
                     <th>Quantity</th>
+                    <th>Price ($)</th>
+                    <th>Total ($)</th>
                 </tr>
             </thead>
             <tbody>
