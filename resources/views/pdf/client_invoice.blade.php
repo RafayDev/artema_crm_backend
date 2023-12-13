@@ -197,6 +197,18 @@
                     <td>{{$invoice_product->quantity}}</td>
                 </tr>
                 @endforeach
+                <tr class="total-row">
+                        <td colspan="6">Sales Tax ($)</td>
+                        <td>{{$client_invoice->sales_tax}} $</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="6">Freight Charges($)</td>
+                        <td>{{$client_invoice->frieght_charges}} $</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="6">Total ($)</td>
+                        <td>{{$client_invoice->total}} $</td>
+                    </tr>
             </tbody>
         </table>
         <div style="margin-top:100px"></div>
