@@ -71,4 +71,21 @@ class ClientInvoiceController extends Controller
             'message' => 'Successfully deleted invoice!'
         ], 200);
     }
+    public function getClientInvoiceProducts($id)
+    {
+        $client_invoice_products = ClientInvoiceProduct::with('product')->where('client_invoice_id', $id)->get();
+        return response()->json([
+            'client_invoice_products' => $client_invoice_products
+        ], 200);
+    }
+    public function viewClientInvoice($id)
+    {
+        $client_invoice = ClientInvoice::with('user.company')->find($id);
+        $client_invoice_products = ClientInvoiceProduct::with('product')->where('client_invoice_id', $id)->get();
+        $client_query = ClientQuery::find($client_invoice->client_query_id);
+        $user = User::find($client_query->user_id);
+        $company = Company::find($client_invoice->company_id);
+        $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company'));
+        return $pdf->stream();
+    }
 }
