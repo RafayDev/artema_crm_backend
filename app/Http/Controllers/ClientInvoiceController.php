@@ -88,7 +88,7 @@ class ClientInvoiceController extends Controller
         $user = User::find($client_query->user_id);
         $client = User::where('company_id',$client_invoice->company_id)->where('user_type','client')->first();
         $company = Company::find($client_invoice->company_id);
-        $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company'));
+        $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company','client'));
         return $pdf->stream();
     }
 }
