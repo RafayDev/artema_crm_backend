@@ -100,3 +100,4 @@ Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQue
 //client invoice routes
 Route::middleware('auth:sanctum')->get('/client-invoices', [ClientInvoiceController::class, 'getClientInvoices']);
 Route::middleware('auth:sanctum')->post('/add-client-invoice', [ClientInvoiceController::class, 'addClientInvoice']);
+Route::middleware('auth:sanctum')->delete('/delete-client-invoice/{id}', [ClientInvoiceController::class, 'deleteClientInvoice']);

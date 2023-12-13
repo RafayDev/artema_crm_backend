@@ -63,4 +63,12 @@ class ClientInvoiceController extends Controller
             'message' => 'Invoice created successfully'
         ], 200);
     }
+    public function deleteClientInvoice($id)
+    {
+        $client_invoice = ClientInvoice::find($id);
+        $client_invoice->delete();
+        return response()->json([
+            'message' => 'Successfully deleted invoice!'
+        ], 200);
+    }
 }
