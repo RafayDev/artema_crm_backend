@@ -12,6 +12,7 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ClientQueryContoller;
+use App\Http\Controllers\ClientInvoiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -96,3 +97,6 @@ Route::middleware('auth:sanctum')->get('/client-queries', [ClientQueryContoller:
 Route::middleware('auth:sanctum')->get('/add-client-query', [ClientQueryContoller::class, 'addClientQuery']);
 Route::middleware('auth:sanctum')->delete('/delete-client-query/{id}', [ClientQueryContoller::class, 'deleteClientQuery']);
 Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQueryContoller::class, 'getClientQueryProducts']);
+//client invoice routes
+Route::middleware('auth:sanctum')->get('/client-invoices', [ClientInvoiceController::class, 'getClientInvoices']);
+Route::middleware('auth:sanctum')->post('/add-client-invoice', [ClientInvoiceController::class, 'addClientInvoice']);
