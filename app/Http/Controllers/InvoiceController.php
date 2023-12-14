@@ -144,6 +144,7 @@ class InvoiceController extends Controller
         file_put_contents($path, $decoded);
     
         $invoice->payment_proof = $fileName;
+        $invoice->status = 'pending-approval';
         $invoice->save();
     
         return response()->json([
