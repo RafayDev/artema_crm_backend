@@ -103,5 +103,5 @@ Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQue
 Route::middleware('auth:sanctum')->get('/client-invoices', [ClientInvoiceController::class, 'getClientInvoices']);
 Route::middleware('auth:sanctum')->post('/add-client-invoice', [ClientInvoiceController::class, 'addClientInvoice']);
 Route::middleware('auth:sanctum')->delete('/delete-client-invoice/{id}', [ClientInvoiceController::class, 'deleteClientInvoice']);
-Route::middleware('auth:sanctun')->post('/status-change-client-invoice', [ClientInvoiceController::class, 'statusChange']);
+Route::middleware('auth:sanctum')->post('/status-change-client-invoice', [ClientInvoiceController::class, 'statusChange']);
 Route::middleware('auth:sanctum')->post('/attach-payment-proof-client-invoice', [ClientInvoiceController::class, 'attachPaymentProof']);
