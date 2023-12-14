@@ -24,7 +24,16 @@ class InvoiceController extends Controller
 {
     public function getInvoices()
     {
+        $user = auth()->user();
         $invoices = Invoice::with('user.company')->orderBy('id', 'desc')->paginate(24);
+        if ($user->user_type == 'client') {
+            $invoices = Invoice::with('user.company')->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(24);
+        }
+        if ($user->user_type == 'client-user') {
+            $company = $user->company;
+            $user = User::where('company_id', $company->id)->where('user_type', 'client')->first();
+            $invoices = Invoice::with('user.company')->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(24);
+        }
         return response()->json([
             'invoices' => $invoices
         ], 200);

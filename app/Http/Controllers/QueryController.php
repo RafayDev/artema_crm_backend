@@ -22,7 +22,16 @@ class QueryController extends Controller
 {
     public function getQueries()
     {
+        $user = auth()->user();
         $queries = Query::with('user.company')->orderBy('id', 'desc')->paginate(24);
+        if($user->user_type == 'client'){
+            $queries = Query::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->paginate(24);
+        }
+        if($user->user_type == 'client-user'){
+            $company = $user->company;
+            $user = User::where('company_id',$company->id)->where('user_type','client')->first();
+            $queries = Query::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->paginate(24);
+        }
         return response()->json([
             'qrfs' => $queries
         ], 200);
