@@ -49,6 +49,7 @@ class InvoiceController extends Controller
         $invoice->sales_tax = $request->sales_tax;
         $invoice->sub_total = $request->sub_total;
         $invoice->total = $request->sub_total + $request->frieght_charges + $request->sales_tax;
+        $invoice->status = 'unpaid';
         $invoice->save();
         $invoice_products = $request->invoice_products;
         foreach ($invoice_products as $invoice_product) {
