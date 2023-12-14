@@ -92,4 +92,22 @@ class ClientInvoiceController extends Controller
         $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company','client'));
         return $pdf->stream();
     }
+    public function changeClientInvoiceStatus(Request $request)
+    {
+        $client_invoice = ClientInvoice::find($request->id);
+        $client_invoice->status = $request->status;
+        $client_invoice->save();
+        return response()->json([
+            'message' => 'Invoice status changed successfully'
+        ], 200);
+    }
+    public function attachPaymentProof(Request $request)
+    {
+        $client_invoice = ClientInvoice::find($request->id);
+        $client_invoice->payment_proof = $request->payment_proof;
+        $client_invoice->save();
+        return response()->json([
+            'message' => 'Payment proof attached successfully'
+        ], 200);
+    }
 }
