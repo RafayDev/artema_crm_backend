@@ -87,8 +87,8 @@ Route::middleware('auth:sanctum')->get('/invoices', [InvoiceController::class, '
 Route::middleware('auth:sanctum')->post('/add-invoice', [InvoiceController::class, 'addInvoice']);
 Route::middleware('auth:sanctum')->delete('/delete-invoice/{id}', [InvoiceController::class, 'deleteInvoice']);
 Route::middleware('auth:sanctum')->get('/invoice-products/{id}', [InvoiceController::class, 'getInvoiceProducts']);
-Route::middleware('auth:sanctum')->get('/status-change-invoice', [InvoiceController::class, 'statusChange']);
-Route::middleware('auth:sanctum')->get('/attach-payment-proof-invoice', [InvoiceController::class, 'attachPaymentProof']);
+Route::middleware('auth:sanctum')->post('/status-change-invoice', [InvoiceController::class, 'statusChange']);
+Route::middleware('auth:sanctum')->post('/attach-payment-proof-invoice', [InvoiceController::class, 'attachPaymentProof']);
 //client user routes
 Route::middleware('auth:sanctum')->get('/client-users', [UserController::class, 'getClientUsers']);
 Route::middleware('auth:sanctum')->post('/edit-client-user', [UserController::class, 'editClientUser']);
@@ -103,3 +103,5 @@ Route::middleware('auth:sanctum')->get('/client-query-products/{id}', [ClientQue
 Route::middleware('auth:sanctum')->get('/client-invoices', [ClientInvoiceController::class, 'getClientInvoices']);
 Route::middleware('auth:sanctum')->post('/add-client-invoice', [ClientInvoiceController::class, 'addClientInvoice']);
 Route::middleware('auth:sanctum')->delete('/delete-client-invoice/{id}', [ClientInvoiceController::class, 'deleteClientInvoice']);
+Route::middleware('auth:sanctun')->post('/status-change-client-invoice', [ClientInvoiceController::class, 'statusChange']);
+Route::middleware('auth:sanctum')->post('/attach-payment-proof-client-invoice', [ClientInvoiceController::class, 'attachPaymentProof']);

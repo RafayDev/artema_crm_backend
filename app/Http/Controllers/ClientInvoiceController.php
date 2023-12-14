@@ -92,22 +92,52 @@ class ClientInvoiceController extends Controller
         $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company','client'));
         return $pdf->stream();
     }
-    public function changeClientInvoiceStatus(Request $request)
+    public function statusChange(Request $request)
     {
-        $client_invoice = ClientInvoice::find($request->id);
-        $client_invoice->status = $request->status;
-        $client_invoice->save();
+        $invoice = ClientInvoice::find($request->id);
+        $invoice->status = $request->status;
+        $invoice->save();
         return response()->json([
-            'message' => 'Invoice status changed successfully'
+            'message' => 'Status changed successfully'
         ], 200);
     }
     public function attachPaymentProof(Request $request)
     {
-        $client_invoice = ClientInvoice::find($request->id);
-        $client_invoice->payment_proof = $request->payment_proof;
-        $client_invoice->save();
+        $invoice = ClientInvoice::find($request->id);
+    
+        // Convert base64 to file
+        $exploded = explode(',', $request->payment_proof);
+        $decoded = base64_decode($exploded[1]);
+    
+        // Determine file extension
+        $extension = '';
+        if (str_contains($exploded[0], 'jpeg')) {
+            $extension = 'jpg';
+        } elseif (str_contains($exploded[0], 'png')) {
+            $extension = 'png';
+        } elseif (str_contains($exploded[0], 'pdf')) {
+            $extension = 'pdf';
+        } elseif (str_contains($exploded[0], 'jpg')) {
+            $extension = 'jpg';
+        }
+        
+        if ($extension === '') {
+            return response()->json([
+                'error' => 'Invalid file format',
+            ], 400);
+        }
+    
+        $fileName = Str::random() . '.' . $extension;
+        $path = public_path() . '/client_payment_proofs/' . $fileName;
+    
+        file_put_contents($path, $decoded);
+    
+        $invoice->payment_proof = $fileName;
+        $invoice->status = 'pending-approval';
+        $invoice->save();
+    
         return response()->json([
-            'message' => 'Payment proof attached successfully'
+            'message' => 'Payment proof attached successfully',
         ], 200);
     }
 }
