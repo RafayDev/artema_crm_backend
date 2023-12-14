@@ -102,4 +102,51 @@ class InvoiceController extends Controller
         $pdf = PDF::loadView('pdf.invoice', compact('invoice', 'invoiceProducts', 'company', 'user'));
         return $pdf->stream();
     }
+    public function statusChange(Request $request)
+    {
+        $invoice = Invoice::find($request->id);
+        $invoice->status = $request->status;
+        $invoice->save();
+        return response()->json([
+            'message' => 'Status changed successfully'
+        ], 200);
+    }
+    public function attachPaymentProof(Request $request)
+    {
+        $invoice = Invoice::find($request->id);
+    
+        // Convert base64 to file
+        $exploded = explode(',', $request->payment_proof);
+        $decoded = base64_decode($exploded[1]);
+    
+        // Determine file extension
+        $extension = '';
+        if (str_contains($exploded[0], 'jpeg')) {
+            $extension = 'jpg';
+        } elseif (str_contains($exploded[0], 'png')) {
+            $extension = 'png';
+        } elseif (str_contains($exploded[0], 'pdf')) {
+            $extension = 'pdf';
+        } elseif (str_contains($exploded[0], 'jpg')) {
+            $extension = 'jpg';
+        }
+        
+        if ($extension === '') {
+            return response()->json([
+                'error' => 'Invalid file format',
+            ], 400);
+        }
+    
+        $fileName = Str::random() . '.' . $extension;
+        $path = public_path() . '/payment_proofs/' . $fileName;
+    
+        file_put_contents($path, $decoded);
+    
+        $invoice->payment_proof = $fileName;
+        $invoice->save();
+    
+        return response()->json([
+            'message' => 'Payment proof attached successfully',
+        ], 200);
+    }
 }
