@@ -26,10 +26,32 @@ class ClientInvoiceController extends Controller
     public function getClientInvoices()
     {
         $user = auth()->user();
-        $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
-        return response()->json([
-            'client_invoices' => $client_invoices
-        ], 200);
+        if($user->user_type == 'client-user'){
+            $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','unpaid')->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_invoices' => $client_invoices
+            ], 200);
+        } else {
+            $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_invoices' => $client_invoices
+            ], 200);
+        }
+    }
+    public function getPendindApprovalinvoices()
+    {
+        $user = auth()->user();
+        if($user->user_type == 'client-user'){
+            $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','pending-approval')->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_invoices' => $client_invoices
+            ], 200);
+        } else {
+            $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('status','pending-approval')->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_invoices' => $client_invoices
+            ], 200);
+        }
     }
     public function addClientInvoice(Request $request)
     {

@@ -24,10 +24,17 @@ class ClientQueryContoller extends Controller
     public function getClientQueries()
     {
         $user = auth()->user();
-        $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
-        return response()->json([
-            'client_qrfs' => $client_queries
-        ], 200);
+        if($user->user_type == 'client-user'){
+            $client_queries = ClientQuery::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_qrfs' => $client_queries
+            ], 200);
+        } else {
+            $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'client_qrfs' => $client_queries
+            ], 200);
+        }
     }
     public function addClientQuery(Request $request)
     {
