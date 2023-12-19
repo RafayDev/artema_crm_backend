@@ -26,7 +26,7 @@ class ClientInvoiceController extends Controller
     public function getClientInvoices()
     {
         $user = auth()->user();
-        if($user->user_type == 'client-user'){
+        if($user->user_type == 'client_user'){
             $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','unpaid')->orderBy('id', 'desc')->paginate(24);
             return response()->json([
                 'client_invoices' => $client_invoices
