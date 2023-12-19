@@ -13,6 +13,8 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ClientQueryContoller;
 use App\Http\Controllers\ClientInvoiceController;
+use App\Http\Controllers\OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -106,3 +108,7 @@ Route::middleware('auth:sanctum')->delete('/delete-client-invoice/{id}', [Client
 Route::middleware('auth:sanctum')->post('/status-change-client-invoice', [ClientInvoiceController::class, 'statusChange']);
 Route::middleware('auth:sanctum')->post('/attach-payment-proof-client-invoice', [ClientInvoiceController::class, 'attachPaymentProof']);
 Route::middleware('auth:sanctum')->get('/get-pending-approval-invoices', [ClientInvoiceController::class, 'getPendindApprovalinvoices']);
+//order routes
+Route::middleware('auth:sanctum')->get('/orders', [OrderController::class, 'getOrders']);
+Route::middleware('auth:sanctum')->post('/create-order', [OrderController::class, 'createOrder']);
+Route::middleware('auth:sanctum')->post('/change-order-status', [OrderController::class, 'changeOrderStatus']);
