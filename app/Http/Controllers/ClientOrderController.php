@@ -47,7 +47,7 @@ class ClientOrderController extends Controller
         $client_order->user_id = $client_invoice->user_id;
         $client_order->company_id = $user->company_id;
         $client_order->client_invoice_id = $client_invoice->id;
-        $client_order->status = 'in-process';
+        $client_order->status = 'in-progress';
         $client_order->save();
         $client_invoice->status = 'paid';
         $client_invoice->save();
