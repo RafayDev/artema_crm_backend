@@ -25,7 +25,7 @@ class ClientQueryContoller extends Controller
     {
         $user = auth()->user();
         if($user->user_type == 'client_user'){
-            $client_queries = ClientQuery::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->paginate(24);
+            $client_queries = ClientQuery::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->get();
             return response()->json([
                 'client_qrfs' => $client_queries
             ], 200);
