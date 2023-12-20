@@ -39,7 +39,7 @@ class ClientOrderController extends Controller
             ], 200);
         }
     }
-    public function CreateClientOrder(Request $request)
+    public function createClientOrder(Request $request)
     {
         $user = auth()->user();
         $client_invoice = ClientInvoice::where('id',$request->invoice_id)->first();
