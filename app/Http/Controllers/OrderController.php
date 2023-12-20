@@ -53,5 +53,8 @@ class OrderController extends Controller
         $order->tracking_no = $request->tracking_no;
         $order->courier = $request->courier;
         $order->save();
+        return response()->json([
+            'success' => 'Order status changed successfully'
+        ], 200);
     }
 }

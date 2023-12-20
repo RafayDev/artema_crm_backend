@@ -14,6 +14,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ClientQueryContoller;
 use App\Http\Controllers\ClientInvoiceController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ClientOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,3 +113,7 @@ Route::middleware('auth:sanctum')->get('/get-pending-approval-invoices', [Client
 Route::middleware('auth:sanctum')->get('/orders', [OrderController::class, 'getOrders']);
 Route::middleware('auth:sanctum')->post('/create-order', [OrderController::class, 'createOrder']);
 Route::middleware('auth:sanctum')->post('/change-order-status', [OrderController::class, 'changeOrderStatus']);
+//client order routes
+Route::middleware('auth:sanctum')->get('/client-orders', [ClientOrderController::class, 'getClientOrders']);
+Route::middleware('auth:sanctum')->post('/create-client-order', [ClientOrderController::class, 'createClientOrder']);
+Route::middleware('auth:sanctum')->post('/change-client-order-status', [ClientOrderController::class, 'changeClientOrderStatus']);
