@@ -58,7 +58,7 @@ class ClientInvoiceController extends Controller
         $user = auth()->user();
         $client_query = ClientQuery::where('id',$request->qrf_id)->first();
         $client_invoice = new ClientInvoice();
-        $client_invoice->user_id = $user->id;
+        $client_invoice->user_id = $client_query->user_id;
         $client_invoice->company_id = $user->company_id;
         $client_invoice->client_query_id = $request->qrf_id;
         $client_invoice->frieght_charges = $request->frieght_charges;
