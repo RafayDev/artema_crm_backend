@@ -84,8 +84,11 @@ class ClientInvoiceController extends Controller
             $client_invoiceProduct->total = $client_invoice_product['total'];
             $client_invoiceProduct->save();
         }
+        if($request->qrf_id != 0)
+        {
         $client_query->status = 'approved';
         $client_query->save();
+        }
 
         return response()->json([
             'message' => 'Invoice created successfully'
