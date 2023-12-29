@@ -34,6 +34,16 @@ class OrderController extends Controller
         $order->invoice_id = $invoice_id;
         $order->status = 'in-progress';
         $order->save();
+        //send notification to client
+        $client = User::find($invoice->user_id);
+        $notification = new Notification();
+        $notification->from_user_id = auth()->user()->id;
+        $notification->to_user_id = $client->id;
+        $notification->message = 'Your order has been placed successfully against invoice # AML-'.$invoice->id.'.';
+        $notification->save();
+        return response()->json([
+            'order' => $order
+        ], 200);
     }
     public function getOrders()
     {
@@ -53,6 +63,13 @@ class OrderController extends Controller
         $order->tracking_no = $request->tracking_no;
         $order->courier = $request->courier;
         $order->save();
+        //send notification to client
+        $client = User::find($order->user_id);
+        $notification = new Notification();
+        $notification->from_user_id = auth()->user()->id;
+        $notification->to_user_id = $client->id;
+        $notification->message = 'Your order status has been changed to '.$request->status.'.';
+        $notification->save();
         return response()->json([
             'success' => 'Order status changed successfully'
         ], 200);
