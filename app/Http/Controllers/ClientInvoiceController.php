@@ -122,7 +122,7 @@ class ClientInvoiceController extends Controller
         // die();
         $client_invoice_products = ClientInvoiceProduct::with('product')->where('client_invoice_id', $id)->get();
         $client_query = ClientQuery::find($client_invoice->client_query_id);
-        $user = User::find($client_query->user_id);
+        $user = User::find($client_invoice->user_id);
         $client = User::where('company_id',$client_invoice->company_id)->where('user_type','client')->first();
         $company = Company::find($client_invoice->company_id);
         $pdf = PDF::loadView('pdf.client_invoice', compact('client_invoice', 'client_invoice_products', 'user', 'company','client'));
