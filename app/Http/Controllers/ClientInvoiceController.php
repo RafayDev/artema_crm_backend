@@ -88,6 +88,12 @@ class ClientInvoiceController extends Controller
         {
         $client_query->status = 'approved';
         $client_query->save();
+        } else {
+            $cart = Cart::where('user_id',$user->id)->get();
+            foreach($cart as $c)
+            {
+                $c->delete();
+            }
         }
 
         return response()->json([
