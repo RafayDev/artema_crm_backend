@@ -224,7 +224,7 @@ class UserController extends Controller
     }
     public function updateUser(Request $request){
         $user = User::find($request->id);
-        $user->name = $request->first_name + " " + $request->last_name;
+        $user->name = $request->first_name . " " . $request->last_name;
         $user->address = $request->address;
         $current_password = $request->current_password;
         $new_password = $request->new_password;
