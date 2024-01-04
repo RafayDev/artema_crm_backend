@@ -15,6 +15,7 @@ use App\Http\Controllers\ClientQueryContoller;
 use App\Http\Controllers\ClientInvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientOrderController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,3 +119,5 @@ Route::middleware('auth:sanctum')->post('/change-order-status', [OrderController
 Route::middleware('auth:sanctum')->get('/client-orders', [ClientOrderController::class, 'getClientOrders']);
 Route::middleware('auth:sanctum')->post('/create-client-order', [ClientOrderController::class, 'createClientOrder']);
 Route::middleware('auth:sanctum')->post('/change-client-order-status', [ClientOrderController::class, 'changeClientOrderStatus']);
+//dashboard routes
+Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'index']);
