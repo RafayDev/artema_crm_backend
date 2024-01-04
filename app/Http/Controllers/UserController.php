@@ -222,4 +222,24 @@ class UserController extends Controller
             'message' => 'Successfully updated user!'
         ], 200);
     }
+    public function updateUser(Request $request){
+        $user = User::find($request->id);
+        $user->name = $request->first_name + " " + $request->last_name;
+        $user->address = $request->address;
+        $current_password = $request->current_password;
+        $new_password = $request->new_password;
+        if($current_password && $new_password){
+            if(Hash::check($current_password, $user->password)){
+                $user->password =  Hash::make($new_password);
+            }else{
+                return response()->json([
+                    'message' => 'Current password is wrong!'
+                ], 422);
+            }
+        }
+        $user->save();
+        return response()->json([
+            'message' => 'Successfully updated user!'
+        ], 200);
+    }
 }
