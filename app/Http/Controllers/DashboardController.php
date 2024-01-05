@@ -22,22 +22,26 @@ class DashboardController extends Controller
             $orders = ClientOrder::where('company_id',$user->company_id)->count();
             $queries = ClientQuery::where('company_id',$user->company_id)->count();
             $products = Product::count();
+            $users = User::where('company_id',$user->company_id)->count();
             return response()->json([
                 'invoices' => $invoices,
                 'orders' => $orders,
                 'queries' => $queries,
-                'products' => $products
+                'products' => $products,
+                'users' => $users
             ], 200);
         } else {
             $invoice = Invoices::count();
             $order = Order::count();
             $query = Query::count();
             $product = Product::count();
+            $users = User::where('user_type','client')->count();
             return response()->json([
                 'invoices' => $invoice,
                 'orders' => $order,
                 'queries' => $query,
-                'products' => $product
+                'products' => $product,
+                'users' => $users
             ], 200);
         }
     }
