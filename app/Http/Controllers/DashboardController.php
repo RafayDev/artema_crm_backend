@@ -21,7 +21,7 @@ class DashboardController extends Controller
             $invoices = ClientInvoice::where('company_id',$user->company_id)->count();
             $orders = ClientOrder::where('company_id',$user->company_id)->count();
             $queries = ClientQuery::where('company_id',$user->company_id)->count();
-            $products = Product::where('company_id',$user->company_id)->count();
+            $products = Product::count();
             return response()->json([
                 'invoices' => $invoices,
                 'orders' => $orders,
