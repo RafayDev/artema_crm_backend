@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Invoices;
+use App\Models\Invoice;
 use App\Models\ClientInvoice;
 use App\Models\Product;
 use App\Models\Query;
@@ -31,7 +31,7 @@ class DashboardController extends Controller
                 'users' => $users
             ], 200);
         } else {
-            $invoice = Invoices::count();
+            $invoice = Invoice::count();
             $order = Order::count();
             $query = Query::count();
             $product = Product::count();
