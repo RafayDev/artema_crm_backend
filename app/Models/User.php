@@ -49,8 +49,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Category::class, 'user_categories', 'user_id', 'category_id');
     }
-    function smtp_email()
+    function email_auth()
     {
-        return $this->belongsTo(UserEmailAuthorization::class, 'user_id', 'id');
+        return $this->hasOne(UserEmailAuthorization::class, 'user_id', 'id');
     }
 }

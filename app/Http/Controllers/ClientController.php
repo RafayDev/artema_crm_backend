@@ -15,7 +15,7 @@ class ClientController extends Controller
 {
     public function getClients()
     {
-        $clients = User::with('company','categories','smtp_email')->where("user_type", "client")->get();
+        $clients = User::with('company','categories','email_auth')->where("user_type", "client")->get();
         return response()->json([
             'clients' => $clients
         ], 200);
