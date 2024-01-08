@@ -68,8 +68,8 @@ class ClientController extends Controller
         //add email authorization
         $emailAuthorization = new UserEmailAuthorization();
         $emailAuthorization->user_id = $client->id;
-        $emailAuthorization->email = $request->email;
-        $emailAuthorization->password = $request->password;
+        $emailAuthorization->email = $request->smtp_email;
+        $emailAuthorization->password = $request->email_password;
         $emailAuthorization->port = $request->port;
         $emailAuthorization->service = $request->service;
         $emailAuthorization->save();
@@ -142,8 +142,8 @@ class ClientController extends Controller
         if($emailAuthorization)
         {
         $emailAuthorization->user_id = $client->id;
-        $emailAuthorization->email = $request->email;
-        $emailAuthorization->password = $request->password;
+        $emailAuthorization->email = $request->smtp_email;
+        $emailAuthorization->password = $request->email_password;
         $emailAuthorization->port = $request->port;
         $emailAuthorization->service = $request->service;
         $emailAuthorization->save();
@@ -151,8 +151,8 @@ class ClientController extends Controller
         else {
             $emailAuthorization = new UserEmailAuthorization();
             $emailAuthorization->user_id = $client->id;
-            $emailAuthorization->email = $request->email;
-            $emailAuthorization->password = $request->password;
+            $emailAuthorization->email = $request->smtp_email;
+            $emailAuthorization->password = $request->email_password;
             $emailAuthorization->port = $request->port;
             $emailAuthorization->service = $request->service;
             $emailAuthorization->save();
