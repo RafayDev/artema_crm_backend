@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\UserCategory;
+use App\Models\UserEmailAuthorization;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -64,6 +65,14 @@ class ClientController extends Controller
             $userCategory->category_id = $category;
             $userCategory->save();
         }
+        //add email authorization
+        $emailAuthorization = new UserEmailAuthorization();
+        $emailAuthorization->user_id = $client->id;
+        $emailAuthorization->email = $request->email;
+        $emailAuthorization->password = $request->password;
+        $emailAuthorization->port = $request->port;
+        $emailAuthorization->service = $request->service;
+        $emailAuthorization->save();
         return response()->json([
             'message' => 'Client added successfully'
         ], 200);
@@ -128,6 +137,26 @@ class ClientController extends Controller
             $userCategory->category_id = $category;
             $userCategory->save();
         }
+        //Edit email authorization
+        $emailAuthorization = UserEmailAuthorization::where('user_id', $client->id)->first();
+        if($emailAuthorization)
+        {
+        $emailAuthorization->user_id = $client->id;
+        $emailAuthorization->email = $request->email;
+        $emailAuthorization->password = $request->password;
+        $emailAuthorization->port = $request->port;
+        $emailAuthorization->service = $request->service;
+        $emailAuthorization->save();
+        }
+        else {
+            $emailAuthorization = new UserEmailAuthorization();
+            $emailAuthorization->user_id = $client->id;
+            $emailAuthorization->email = $request->email;
+            $emailAuthorization->password = $request->password;
+            $emailAuthorization->port = $request->port;
+            $emailAuthorization->service = $request->service;
+            $emailAuthorization->save();
+        }
         return response()->json([
             'message' => 'Client updated successfully'
         ], 200);
@@ -142,6 +171,11 @@ class ClientController extends Controller
             foreach ($categories as $category) {
                 $category->delete();
             }
+        }
+        $emailAuthorization = UserEmailAuthorization::where('user_id', $client->id)->first();
+        if($emailAuthorization)
+        {
+            $emailAuthorization->delete();
         }
         $client->delete();
         return response()->json([
