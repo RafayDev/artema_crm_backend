@@ -243,7 +243,7 @@ class UserController extends Controller
             'message' => 'Successfully updated user!'
         ], 200);
     }
-    public function updatePassword(Request $request){
+    public function updateUserPassword(Request $request){
         $email = $request->email;
         $password = $request->password;
         $user = User::where('email',$email)->first();
