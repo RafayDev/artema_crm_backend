@@ -243,4 +243,20 @@ class UserController extends Controller
             'message' => 'Successfully updated user!'
         ], 200);
     }
+    public function updatePassword(Request $request){
+        $email = $request->email;
+        $password = $request->password;
+        $user = User::where('email',$email)->first();
+        if($user){
+            $user->password =  Hash::make($password);
+            $user->save();
+            return response()->json([
+                'message' => 'Successfully updated password!'
+            ], 200);
+        }else{
+            return response()->json([
+                'message' => 'Email not found!'
+            ], 422);
+        }
+    }
 }

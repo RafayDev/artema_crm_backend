@@ -75,6 +75,7 @@ Route::middleware('auth:sanctum')->delete('/delete-user/{id}', [UserController::
 Route::middleware('auth:sanctum')->get('/user/{id}', [UserController::class, 'getUserById']);
 Route::middleware('auth:sanctum')->get('/active-unactive-user/{id}', [UserController::class, 'activeUnactiveUser']);
 Route::middleware('auth:sanctum')->post('/update-user', [UserController::class, 'updateUser']);
+Route::post('/update-user-password', [UserController::class, 'updateUserPassword']);
 //cart routes
 Route::middleware('auth:sanctum')->get('/cart', [CartController::class, 'getCart']);
 Route::middleware('auth:sanctum')->post('/add-to-cart', [CartController::class, 'addToCart']);
