@@ -29,7 +29,7 @@ class ClientOrderController extends Controller
         $user = auth()->user();
         if($user->user_type == 'client_user'){
             if($user->user_from == "crm"){
-                $client_orders = ClientOrder::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->paginate(24);
+                $client_orders = ClientOrder::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
                 return response()->json([
                     'client_orders' => $client_orders
                 ], 200);
