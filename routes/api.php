@@ -16,6 +16,7 @@ use App\Http\Controllers\ClientInvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,3 +123,8 @@ Route::middleware('auth:sanctum')->post('/create-client-order', [ClientOrderCont
 Route::middleware('auth:sanctum')->post('/change-client-order-status', [ClientOrderController::class, 'changeClientOrderStatus']);
 //dashboard routes
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'index']);
+//group routes
+Route::middleware('auth:sanctum')->get('/groups', [GroupController::class, 'getGroups']);
+Route::middleware('auth:sanctum')->post('/add-group', [GroupController::class, 'addGroup']);
+Route::middleware('auth:sanctum')->post('/edit-group', [GroupController::class, 'editGroup']);
+Route::middleware('auth:sanctum')->delete('/delete-group/{id}', [GroupController::class, 'deleteGroup']);
