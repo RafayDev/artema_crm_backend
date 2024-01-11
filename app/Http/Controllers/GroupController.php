@@ -55,6 +55,13 @@ class GroupController extends Controller
             'message' => 'Successfully deleted group!'
         ], 200);
     }
+    public function getGroup($id)
+    {
+        $group = Group::find($id);
+        return response()->json([
+            'group' => $group
+        ], 200);
+    }
     public function getGroupUsers($id)
     {
         $group_users = GroupUser::with('user')->where('group_id', $id)->get();

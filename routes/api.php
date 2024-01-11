@@ -128,6 +128,7 @@ Route::middleware('auth:sanctum')->get('/groups', [GroupController::class, 'getG
 Route::middleware('auth:sanctum')->post('/add-group', [GroupController::class, 'addGroup']);
 Route::middleware('auth:sanctum')->post('/edit-group', [GroupController::class, 'editGroup']);
 Route::middleware('auth:sanctum')->delete('/delete-group/{id}', [GroupController::class, 'deleteGroup']);
+Route::middleware('auth:sanctum')->get('/group/{id}', [GroupController::class, 'getGroup']);
 Route::middleware('auth:sanctum')->get('/group-users/{id}', [GroupController::class, 'getGroupUsers']);
 Route::middleware('auth:sanctum')->post('/add-group-users', [GroupController::class, 'addGroupUsers']);
 Route::middleware('auth:sanctum')->delete('/delete-group-user/{id}', [GroupController::class, 'deleteGroupUser']);
