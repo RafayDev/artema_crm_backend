@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Group;
+use App\Models\GroupUser;
 
 class GroupController extends Controller
 {
@@ -11,12 +12,12 @@ class GroupController extends Controller
     {
         $user = auth()->user();
         if($user->user_type == 'client-user' || $user->user_type == 'client'){
-            $groups = Group::where('company_id', $user->company_id)->orderBy('id', 'desc')->paginate(24);
+            $groups = Group::with('twoLatestUsers')->where('company_id', $user->company_id)->orderBy('id', 'desc')->paginate(24);
             return response()->json([
                 'groups' => $groups
             ], 200);
         } else{
-        $groups = Group::where('company_id',0)->orderBy('id', 'desc')->paginate(24);
+        $groups = Group::with('twoLatestUsers.user')->where('company_id',0)->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'groups' => $groups
         ], 200);
@@ -52,6 +53,35 @@ class GroupController extends Controller
         $group->delete();
         return response()->json([
             'message' => 'Successfully deleted group!'
+        ], 200);
+    }
+    public function getGroupUsers($id)
+    {
+        $group_users = GroupUser::with('user')->where('group_id', $id)->get();
+        return response()->json([
+            'group_users' => $group_users
+        ], 200);
+    }
+    public function addGroupUsers(Request $request)
+    {
+        $group_id = $request->group_id;
+        $user_ids = $request->users_ids;
+        foreach ($user_ids as $user_id) {
+            $group_user = new GroupUser();
+            $group_user->group_id = $group_id;
+            $group_user->user_id = $user_id;
+            $group_user->save();
+        }
+        return response()->json([
+            'message' => 'Successfully added user to group!'
+        ], 201);
+    }
+    public function deleteGroupUser($id)
+    {
+        $group_user = GroupUser::find($id);
+        $group_user->delete();
+        return response()->json([
+            'message' => 'Successfully deleted user from group!'
         ], 200);
     }
 }
