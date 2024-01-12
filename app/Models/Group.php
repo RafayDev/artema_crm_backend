@@ -14,6 +14,8 @@ class Group extends Model
     }
     public function twoLatestUsers()
     {
-        return $this->hasMany(GroupUser::class, 'group_id', 'id')->latest()->take(2);
+        // return $this->hasMany(GroupUser::class, 'group_id', 'id')->latest()->take(2);
+        //above and joinwith user
+        return $this->hasMany(GroupUser::class, 'group_id', 'id')->latest()->take(2)->joinwith('user');
     }
 }
