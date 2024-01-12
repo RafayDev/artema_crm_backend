@@ -17,7 +17,7 @@ class GroupController extends Controller
                 'groups' => $groups
             ], 200);
         } else{
-        $groups = Group::with('twoLatestUsers.user')->where('company_id',0)->orderBy('id', 'desc')->paginate(24);
+        $groups = Group::with('twoLatestUsers.user','twoLatestUsers.user')->where('company_id',0)->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'groups' => $groups
         ], 200);
