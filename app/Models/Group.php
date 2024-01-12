@@ -17,6 +17,6 @@ class Group extends Model
         return $this->hasMany(GroupUser::class, 'group_id', 'id')
         ->latest()
         ->take(2)
-        ->join('users', 'group_users.user_id', '=', 'users.id');
+        ->with('user');
     }
 }
