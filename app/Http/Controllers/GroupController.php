@@ -72,6 +72,11 @@ class GroupController extends Controller
     public function addGroupUsers(Request $request)
     {
         $group_id = $request->group_id;
+        //delete previous users
+        $group_users = GroupUser::where('group_id', $group_id)->get();
+        foreach ($group_users as $group_user) {
+            $group_user->delete();
+        }
         $user_ids = $request->users_ids;
         foreach ($user_ids as $user_id) {
             $group_user = new GroupUser();
