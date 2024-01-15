@@ -183,7 +183,7 @@ class UserController extends Controller
         $search = $request->search;
         if($search != ''){
             $user = auth()->user();
-            $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->where('name','LIKE','%'.$search.'%')->orderBy('id', 'desc')->paginate(24);
+            $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->where('email','LIKE','%'.$search.'%')->orderBy('id', 'desc')->paginate(24);
             return response()->json([
                 'users' => $users
             ], 200);
