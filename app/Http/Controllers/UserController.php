@@ -83,21 +83,12 @@ class UserController extends Controller
             'message' => 'Successfully logged out!'
         ], 200);
     }
-    public function getUsers(Request $request)
+    public function getUsers()
     {
-        $search = $request->search;
-        if($search != ''){
-
-            $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->where('user_type','!=','client')->where('name','LIKE','%'.$search.'%')->orderBy('id', 'desc')->paginate(24);
-            return response()->json([
-                'users' => $user
-            ], 200);
-        } else{
         $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->where('user_type','!=','client')->get();
         return response()->json([
             'users' => $user
         ], 200);
-    }
     }
     public function createUser(Request $request)
     {
