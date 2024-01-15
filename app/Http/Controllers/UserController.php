@@ -83,12 +83,21 @@ class UserController extends Controller
             'message' => 'Successfully logged out!'
         ], 200);
     }
-    public function getUsers()
+    public function getUsers(Request $request)
     {
+        $search = $request->search;
+        if($search != ''){
+
+            $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->where('user_type','!=','client')->where('name','LIKE','%'.$search.'%')->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'users' => $user
+            ], 200);
+        } else{
         $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->where('user_type','!=','client')->get();
         return response()->json([
             'users' => $user
         ], 200);
+    }
     }
     public function createUser(Request $request)
     {
@@ -178,13 +187,22 @@ class UserController extends Controller
             'message' => 'Successfully created user!'
         ], 201);
     }
-    public function getClientUsers()
+    public function getClientUsers(Request $request)
     {
+        $search = $request->search;
+        if($search != ''){
+            $user = auth()->user();
+            $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->where('name','LIKE','%'.$search.'%')->orderBy('id', 'desc')->paginate(24);
+            return response()->json([
+                'users' => $users
+            ], 200);
+        } else{
         $user = auth()->user();
         $users = User::where('user_type', 'client_user')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'users' => $users
         ], 200);
+    }
     }
     public function editClientUser(Request $request)
     {
