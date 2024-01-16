@@ -51,6 +51,6 @@ class User extends Authenticatable
     }
     function email_auth()
     {
-        return $this->hasOne(UserEmailAuthorization::class, 'user_id', 'id');
+        return $this->hasOne(UserEmailAuthorization::class, 'company_id', 'company_id');
     }
 }

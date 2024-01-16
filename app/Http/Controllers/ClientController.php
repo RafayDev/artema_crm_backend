@@ -197,11 +197,10 @@ class ClientController extends Controller
     public function getClientByToken()
     {
         $user = auth()->user();
-        $client = User::with('company','categories')->find($user->id);
+        $client = User::with('company','email_auth','categories')->find($user->id);
         $emailAuthorization = UserEmailAuthorization::where('company_id', $client->company_id)->first();
         return response()->json([
-            'client' => $client,
-            'email_auth' => $emailAuthorization
+            'client' => $client
         ], 200);
     }
 }
