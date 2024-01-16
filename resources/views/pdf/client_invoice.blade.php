@@ -179,7 +179,7 @@
                     <p>Thank you for trusting Gryphon Medical Solutions LLC for your surgical instrumentation needs.</p>
                     </div>
                     <div style="font-size: 13px; font-weight: light; margin-top:90px">
-                        <p>To pay online, go to {{$invoice->payment_link}}</p>
+                        <p>To pay online, go to {{$client_invoice->payment_link}}</p>
                     </div>
                 </td>
                 <td class="column5">
