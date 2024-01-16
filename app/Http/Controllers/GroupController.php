@@ -29,6 +29,13 @@ class GroupController extends Controller
         $group = new Group();
         $group->name = $request->name;
         $group->description = $request->description;
+        $group->state = $request->state;
+        $group->bank_name = $request->bank_name;
+        $group->account_no = $request->account_no;
+        $group->iban = $request->iban;
+        $group->contact_person = $request->contact_person;
+        $group->assigned_to = $request->assigned_to;
+        $group->notes = $request->notes;
         if($user->user_type == 'client-user' || $user->user_type == 'client'){
             $group->company_id = $user->company_id;
         }
@@ -42,6 +49,13 @@ class GroupController extends Controller
         $group = Group::find($request->id);
         $group->name = $request->name;
         $group->description = $request->description;
+        $group->state = $request->state;
+        $group->bank_name = $request->bank_name;
+        $group->account_no = $request->account_no;
+        $group->iban = $request->iban;
+        $group->contact_person = $request->contact_person;
+        $group->assigned_to = $request->assigned_to;
+        $group->notes = $request->notes;
         $group->save();
         return response()->json([
             'message' => 'Successfully updated group!'
