@@ -184,7 +184,7 @@
                 </td>
                 <td class="column5">
                 <div style="font-weight: light;text-align: left; margin-left:100px;">
-                    <p style="font-size:13px;"><b>Subtotal:</b> $0.00</p>
+                    <p style="font-size:13px;"><b>Subtotal:</b> ${{$client_invoice->sub_total}}</p>
                     <p style="font-size:13px; margin-top:-10px;"><b> Sales Tax:&nbsp; $ {{$client_invoice->sales_tax}}</b> </p>
                     <div class="down-border"></div>
                     <p style="font-size:13px; margin-top:-10px;"><b> Frieght Charges:</b> &nbsp;$ {{$client_invoice->frieght_charges}} </p>
