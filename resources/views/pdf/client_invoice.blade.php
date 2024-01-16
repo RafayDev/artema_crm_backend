@@ -165,8 +165,8 @@
                     <td>{{$invoice_product->sku}}</td>
                     <td>{{$invoice_product->size}}</td>
                     <td>{{$invoice_product->quantity}}</td>
-                    <td>{{$invoice_product->price}} $</td>
-                    <td>{{$invoice_product->total}} $</td>
+                    <td style="width:20%">{{$invoice_product->price}} $</td>
+                    <td style="width:20%">{{$invoice_product->total}} $</td>
                 </tr>
                 @endforeach
         </table>
