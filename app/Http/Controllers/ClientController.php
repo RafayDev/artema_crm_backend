@@ -68,6 +68,7 @@ class ClientController extends Controller
         //add email authorization
         $emailAuthorization = new UserEmailAuthorization();
         $emailAuthorization->user_id = $client->id;
+        $emailAuthorization->company_id = $company->id;
         $emailAuthorization->email = $request->smtp_email;
         $emailAuthorization->password = $request->email_password;
         $emailAuthorization->port = $request->port;
@@ -142,6 +143,7 @@ class ClientController extends Controller
         if($emailAuthorization)
         {
         $emailAuthorization->user_id = $client->id;
+        $emailAuthorization->company_id = $company->id;
         $emailAuthorization->email = $request->smtp_email;
         $emailAuthorization->password = $request->email_password;
         $emailAuthorization->port = $request->port;
@@ -151,6 +153,7 @@ class ClientController extends Controller
         else {
             $emailAuthorization = new UserEmailAuthorization();
             $emailAuthorization->user_id = $client->id;
+            $emailAuthorization->company = $company->id;
             $emailAuthorization->email = $request->smtp_email;
             $emailAuthorization->password = $request->email_password;
             $emailAuthorization->port = $request->port;
@@ -195,8 +198,10 @@ class ClientController extends Controller
     {
         $user = auth()->user();
         $client = User::with('company','categories')->find($user->id);
+        $emailAuthorization = UserEmailAuthorization::where('company_id', $client->company_id)->first();
         return response()->json([
-            'client' => $client
+            'client' => $client,
+            'email_auth' => $emailAuthorization
         ], 200);
     }
 }
