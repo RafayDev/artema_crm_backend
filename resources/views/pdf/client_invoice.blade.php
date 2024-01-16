@@ -6,179 +6,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
     <style>
-        @page {
-            margin: 0px;
-            padding: 0px;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 100px;
-            position: relative;
-        }
-
-        .page-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('./logos/{{$company->company_logo}}');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            z-index: -2;
-        }
-
-        .opacity-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            opacity: 0.85;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eee;
-            padding: 10px;
-            z-index: 1000;
-        }
-
-        .header img {
-            width: 140px;
-            margin-left: 20px; 
-        }
-
-        .container {
-            width: 95%;
-            margin: 2em auto;
-        }
-
-        h1, h2 {
-            margin: 0.5em 0;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 24px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 20px;
-            color: #666;
-        }
-
-        h3 {
-            text-align: right;
-            font-size: 16px;
-            color: #999;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2em;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5em 1em;
-        }
-
-        th {
-            background-color: #f5f5f5;
-        }
-
-        td {
-            text-align: center;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 20px 0;
-            z-index: 999;
-        }
-
-        .footer-content {
-            width: 100%;
-            margin: 0 auto;
-            color: #ecf0f1;
-        }
-
-        .footer-content p {
-            text-align: center;
-            margin: 10px 0;
-        }
-        .invoice-header {
-        border-collapse: collapse;
-        margin-bottom: 30px;
+    .header-table {
+        width: 100%;
     }
 
-    .invoice-header td {
+    .header-table,
+    th,
+    td {
+        /* border: 1px solid black; */
+    }
+
+    th,
+    td {
+        /* height: 75px; */
+        font-weight: 100;
+    }
+
+    /* Set specific width for each column */
+    .column1 {
+        width: 40%;
+        /* Adjust as needed */
+    }
+
+    .column2 {
+        width: 20%;
+        /* Adjust as needed */
+        text-align: left;
         vertical-align: top;
-        padding: 10px;
-        font-size: 14px;
-        color: #666;
-        border: none;
+    }
+
+    .column3 {
+        width: 40%;
+        /* Adjust as needed */
+        text-align: right;
+        vertical-align: top;
+    }
+
+    .column4 {
+        width: 60%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column5 {
+        width: 40%;
+        text-align: right;
+        vertical-align: top;
+    }
+
+    .bill-to {
+        margin-top: 100px;
+    }
+
+    .down-border {
+        border-bottom: 1px solid black;
+        margin-top: -10px;
+    }
+
+    .middle-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+
+    .middle-table th {
+        border: 2px solid black;
+        /* text-align: center; */
+        font-weight: light;
+    }
+
+    .middle-table td {
+        border: 2px solid black;
+        /* text-align: center; */
+    }
+
+    .middle-table td:nth-child(1),
+    .middle-table th:nth-child(1) {
+        width: 20%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(2),
+    .middle-table th:nth-child(2) {
+        width: 30%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(3),
+    .middle-table th:nth-child(3) {
+        width: 25%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(4),
+    .middle-table th:nth-child(4) {
+        width: 25%;
+        /* Adjust as needed */
     }
     </style>
 </head>
 
 <body>
-    <div class="page-background"></div>
-    <div class="opacity-layer"></div>
-
-    <div class="header">
-        <img src="./logos/{{$company->company_logo}}" alt="Company Logo">
-    </div>
-    
-    <div class="container">
-        <h1>Invoice</h1>
-        <h2>{{$company->company_name}}</h2>
-        <table class="invoice-header">
-            <tbody>
-                <tr>
-                    <td width="50%" style="text-align: left;">
-
-                        <strong>Client Name:</strong>
-                        {{$user->name}}<br>
-
-                        <strong>Email:</strong>
-                        {{$user->email}}<br>
-
-                        <strong>Phone:</strong>
-                        {{$user->phone}}<br>
-
-                        <strong>Address:</strong>
-                        {{$user->address}}
-                    </td>
-                    <td width="50%" style="text-align: right;">
-                        <strong>Date:</strong>
-                        {{$client_invoice->created_at->format('d-m-Y')}}<br>
-                    </td>
-                </tr>
-            </tbody>
+    <table class="header-table">
+        <tr>
+            <td class="column1" style="font-size: 12px; font-weight: light;"><b>{{$company->company_name}}</b><br>
+                {{$company->company_name}}<br>
+                {{$company->company_address}}1<br>
+                {{$company->company_phone}}
+                <div class="bill-to">
+                    <p style="font-size:13px;"><b>Bill To:</b></p>
+                    <div class="down-border"></div>
+                    <p style="margin-top:2px;font-size:13px;">{{$user->name}}</p>
+                </div>
+            </td>
+            <td class="column2" style="text-align: left; font-size:25px; color:#C4C4C4;">INVOICE</td>
+            <td class="column3">
+                <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" width="200" height="65">
+                <div style="font-weight: light;text-align: left; margin-left:100px; margin-top:40px;">
+                    <p style="font-size:13px;"><b>Invoice #:</b> {{$client_invoice->id}}</p>
+                    <p style="font-size:13px; margin-top:-10px;"><b>Invoice Date:</b> {{$client_invoice->created_at->format('d-m-Y')}}</p>
+                    <div class="down-border"></div>
+                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Due Amount:</b> $ {{$client_invoice->total}}</p>
+                    <div class="down-border"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div style="margin-top:10px">
+        <table class="middle-table" style="text-align:center; font-size:14px;">
+            <tr>
+                <td>Due Date</td>
+                <td>Terms</td>
+                <td>Sale Rep</td>
+            </tr>
+            <tr>
+                <th>2021-01-11</th>
+                <th>Due on Receipt</th>
+                <th>{{$client->name}}</th>
+            </tr>
         </table>
-
-        <table style="font-size:12px;">
-            <thead>
-                <tr>
+    </div>
+    <div style="margin-top:50px">
+        <table class="middle-table" style="text-align:left; font-size:14px;">
+        <tr>
                     <th>#</th>
                     <th>Product Name</th>
                     <th>SKU</th>
@@ -187,8 +157,6 @@
                     <th>Price ($)</th>
                     <th>Total ($)</th>
                 </tr>
-            </thead>
-            <tbody>
                 @php $total = 0; @endphp
                 @foreach($client_invoice_products as $invoice_product)
                 <tr>
@@ -201,31 +169,34 @@
                     <td>{{$invoice_product->total}} $</td>
                 </tr>
                 @endforeach
-                <tr class="total-row">
-                        <td colspan="6">Sales Tax ($)</td>
-                        <td>{{$client_invoice->sales_tax}} $</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6">Freight Charges($)</td>
-                        <td>{{$client_invoice->frieght_charges}} $</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6">Total ($)</td>
-                        <td>{{$client_invoice->total}} $</td>
-                    </tr>
-            </tbody>
         </table>
-        <div style="margin-top:100px"></div>
     </div>
-
-    <div class="footer">
-        <div class="footer-content">
-            <p><strong>Company Address:</strong>{{$company->company_address}}</p>
-            <p><strong>Email:</strong> {{$client->email}}</p>
-            <p><strong>Phone:</strong> {{$company->company_phone}}</p>
-            <p style="font-size:12px; text-align:right;">System Generated</p>
-        </div>
-    </div>
+    <div style="margin-top:50px">
+        <table class="header-table">
+            <tr>
+                <td class="column4">
+                    <div style="font-size: 15px; font-weight: light;">
+                    <p>Thank you for trusting Gryphon Medical Solutions LLC for your surgical instrumentation needs.</p>
+                    </div>
+                    <div style="font-size: 13px; font-weight: light; margin-top:90px">
+                        <p>To pay online, go to {{$invoice->payment_link}}</p>
+                    </div>
+                </td>
+                <td class="column5">
+                <div style="font-weight: light;text-align: left; margin-left:100px;">
+                    <p style="font-size:13px;"><b>Subtotal:</b> $0.00</p>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Sales Tax:&nbsp; $ {{$client_invoice->sales_tax}}</b> </p>
+                    <div class="down-border"></div>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Frieght Charges:</b> &nbsp;$ {{$client_invoice->frieght_charges}} </p>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Payments:</b> &nbsp;$ {{$client_invoice->total}} </p>
+                    <div class="down-border"></div>
+                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Amount Due:</b>&nbsp; $ {{$client_invoice->total}}</p>
+                    <div class="down-border"></div>
+                </div>
+                </td>
+            </tr>
+        </table>
+        <div>
 </body>
 
 </html>
