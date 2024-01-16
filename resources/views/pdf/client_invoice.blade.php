@@ -111,7 +111,7 @@
         <tr>
             <td class="column1" style="font-size: 12px; font-weight: light;"><b>{{$company->company_name}}</b><br>
                 {{$company->company_name}}<br>
-                {{$company->company_address}}1<br>
+                {{$company->company_address}}<br>
                 {{$company->company_phone}}
                 <div class="bill-to">
                     <p style="font-size:13px;"><b>Bill To:</b></p>
@@ -176,7 +176,7 @@
             <tr>
                 <td class="column4">
                     <div style="font-size: 15px; font-weight: light;">
-                    <p>Thank you for trusting Gryphon Medical Solutions LLC for your surgical instrumentation needs.</p>
+                    <p>Thank you for trusting {{$company->company_name}} for your surgical instrumentation needs.</p>
                     </div>
                     <div style="font-size: 13px; font-weight: light; margin-top:90px">
                         <p>To pay online, go to {{$client_invoice->payment_link}}</p>
