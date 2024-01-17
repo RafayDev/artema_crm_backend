@@ -30,7 +30,7 @@ class ClientInvoiceController extends Controller
         if($user->user_type == 'client_user'){
             if($user->user_from == "crm"){
                 if($search != ''){
-                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id', 'like', '%' . $search . '%')->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
                         'client_invoices' => $client_invoices
                     ], 200);
@@ -42,7 +42,7 @@ class ClientInvoiceController extends Controller
                 }
             } else{
                 if($search != ''){
-                    $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->where('status','unpaid')->orderBy('id', 'desc')->paginate(24);
+                    $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('id', 'like', '%' . $search . '%')->where('status','unpaid')->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
                         'client_invoices' => $client_invoices
                     ], 200);
@@ -55,7 +55,7 @@ class ClientInvoiceController extends Controller
               }
             } else {
                 if($search != ''){
-                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
                         'client_invoices' => $client_invoices
                     ], 200);
