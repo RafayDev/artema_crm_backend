@@ -140,7 +140,7 @@
                 <td>Sale Rep</td>
             </tr>
             <tr>
-                <th>2021-01-11</th>
+                <th>{{$client_invoice->due_date}}</th>
                 <th>Due on Receipt</th>
                 <th>{{$client->name}}</th>
             </tr>
