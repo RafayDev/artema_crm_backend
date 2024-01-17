@@ -30,24 +30,24 @@ class ClientQueryContoller extends Controller
                 if($search != ''){
                     $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
-                        'client_queries' => $client_queries
+                        'client_qrfs' => $client_queries
                     ], 200);
                 } else {
                     $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
-                        'client_queries' => $client_queries
+                        'client_qrfs' => $client_queries
                     ], 200);
                 }
             } else{
                 if($search != ''){
                     $client_queries = ClientQuery::with('user.company')->where('user_id',$user->id)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                     return response()->json([
-                        'client_queries' => $client_queries
+                        'client_qrfs' => $client_queries
                     ], 200);
                 } else {
                     $client_queries = ClientQuery::with('user.company')->where('user_id',$user->id)->orderBy('id', 'desc')->get();
                     return response()->json([
-                        'client_queries' => $client_queries
+                        'client_qrfs' => $client_queries
                     ], 200);
                 }
         }
@@ -55,7 +55,7 @@ class ClientQueryContoller extends Controller
             if($search != ''){
                 $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                 return response()->json([
-                    'client_queries' => $client_queries
+                    'client_qrfs' => $client_queries
                 ], 200);
             } else {
             $client_queries = ClientQuery::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
