@@ -23,26 +23,48 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class ClientInvoiceController extends Controller
 {
-    public function getClientInvoices()
+    public function getClientInvoices(Request $request)
     {
         $user = auth()->user();
+        $search = $request->search;
         if($user->user_type == 'client_user'){
             if($user->user_from == "crm"){
-                $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
-                return response()->json([
-                    'client_invoices' => $client_invoices
-                ], 200);
+                if($search != ''){
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                } else {
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                }
             } else{
-            $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','unpaid')->orderBy('id', 'desc')->get();
-            return response()->json([
-                'client_invoices' => $client_invoices
-            ], 200);
-        }
-        } else {
-            $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
-            return response()->json([
-                'client_invoices' => $client_invoices
-            ], 200);
+                if($search != ''){
+                    $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->where('status','unpaid')->orderBy('id', 'desc')->paginate(24);
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                } else {
+                    $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','unpaid')->orderBy('id', 'desc')->get();
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                }
+              }
+            } else {
+                if($search != ''){
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('id',$search)->where('id', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                } else {
+                    $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->orderBy('id', 'desc')->paginate(24);
+                    return response()->json([
+                        'client_invoices' => $client_invoices
+                    ], 200);
+                }
         }
     }
     public function getPendindApprovalinvoices()
