@@ -8,19 +8,34 @@ use App\Models\GroupUser;
 
 class GroupController extends Controller
 {
-    public function getGroups()
+    public function getGroups(Request $request)
     {
         $user = auth()->user();
+        $search = $request->search;
         if($user->user_type == 'client-user' || $user->user_type == 'client'){
+            if($search != ''){
+                $groups = Group::with('twoLatestUsers')->where('company_id', $user->company_id)->where('name', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                return response()->json([
+                    'groups' => $groups
+                ], 200);
+            } else {
             $groups = Group::with('twoLatestUsers')->where('company_id', $user->company_id)->orderBy('id', 'desc')->paginate(24);
             return response()->json([
                 'groups' => $groups
             ], 200);
+        }
         } else{
+            if($search != ''){
+                $groups = Group::with('twoLatestUsers')->where('company_id', 0)->where('name', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
+                return response()->json([
+                    'groups' => $groups
+                ], 200);
+            } else {
         $groups = Group::with('twoLatestUsers.user','twoLatestUsers.user')->where('company_id',0)->orderBy('id', 'desc')->paginate(24);
         return response()->json([
             'groups' => $groups
         ], 200);
+    }
     }
     }
     public function addGroup(Request $request)
