@@ -76,7 +76,7 @@ class ClientInvoiceController extends Controller
                 'client_invoices' => $client_invoices
             ], 200);
         } else {
-            $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('status','pending-approval')->orderBy('id', 'desc')->paginate(24);
+            $client_invoices = ClientInvoice::with('user.company')->where('company_id',$user->company_id)->where('status','pending-approval')->orderBy('id', 'desc')->get();
             return response()->json([
                 'client_invoices' => $client_invoices
             ], 200);
