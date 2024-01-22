@@ -37,6 +37,8 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         //slug is the url friendly version of the category name
         $category->category_slug = Str::slug($request->category_name);
+        $category->title = $request->title;
+        $category->description = $request->description;
         $category->save();
         return response()->json([
             'message' => 'Category added successfully'
@@ -48,6 +50,8 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         //slug is the url friendly version of the category name
         $category->category_slug = Str::slug($request->category_name);
+        $category->title = $request->title;
+        $category->description = $request->description;
         $category->save();
         return response()->json([
             'message' => 'Category updated successfully'
