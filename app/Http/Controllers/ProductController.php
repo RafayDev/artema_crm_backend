@@ -109,11 +109,9 @@ class ProductController extends Controller
     }
     public function getProductById($id)
     {
-        $product = Product::find($id);
-        $product_sizes = ProductSize::where('product_id', $product->id)->get();
+        $product = Product::with('productSizes')->find($id);
         return response()->json([
-            'product' => $product,
-            'product_sizes' => $product_sizes
+            'product' => $product
         ], 200);
     }
     public function getProductsBySubCategoryIdNoAuth($id)
