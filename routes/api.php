@@ -57,7 +57,7 @@ Route::middleware('auth:sanctum')->get('/products', [ProductController::class, '
 Route::middleware('auth:sanctum')->post('/add-product', [ProductController::class, 'addProduct']);
 Route::middleware('auth:sanctum')->post('/edit-product', [ProductController::class, 'editProduct']);
 Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
-Route::middleware('auth:sanctum')->get('/product/{id}', [ProductController::class, 'getProductById']);
+Route::get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::middleware('auth:sanctum')->get('/get-product-by-subcategory/{id}', [ProductController::class, 'getProductsBySubCategoryId']);
 Route::get('/get-product-by-subcategory-no-auth/{id}', [ProductController::class, 'getProductsBySubCategoryIdNoAuth']);
 Route::post('/search-products', [ProductController::class, 'searchProducts']);
