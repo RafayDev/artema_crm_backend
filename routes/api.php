@@ -40,7 +40,7 @@ Route::middleware('auth:sanctum')->get('/categories', [CategoryController::class
 Route::middleware('auth:sanctum')->post('/add-category', [CategoryController::class, 'addCategory']);
 Route::middleware('auth:sanctum')->post('/edit-category', [CategoryController::class, 'editCategory']);
 Route::middleware('auth:sanctum')->delete('/delete-category/{id}', [CategoryController::class, 'deleteCategory']);
-Route::middleware('auth:sanctum')->get('/category/{id}', [CategoryController::class, 'getCategoryById']);
+Route::get('/category/{id}', [CategoryController::class, 'getCategoryById']);
 Route::middleware('auth:sanctum')->post('/assign-sub-category', [CategoryController::class, 'assignSubCategory']);
 Route::middleware('auth:sanctum')->get('get-categories-by-user-id', [CategoryController::class, 'getSubCategoriesByCategoryId']);
 Route::middleware('auth:sanctum')->get('/category-sub-categories-array/{id}', [CategoryController::class, 'getSubCategoriesIdsArraybyCategoryId']);
@@ -51,7 +51,7 @@ Route::middleware('auth:sanctum')->get('/sub-categories', [SubCategoryController
 Route::middleware('auth:sanctum')->post('/add-sub-category', [SubCategoryController::class, 'addSubCategory']);
 Route::middleware('auth:sanctum')->post('/edit-sub-category', [SubCategoryController::class, 'editSubCategory']);
 Route::middleware('auth:sanctum')->delete('/delete-sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
-Route::middleware('auth:sanctum')->get('/sub-category/{id}', [SubCategoryController::class, 'getSubCategoryById']);
+Route::get('/sub-category/{id}', [SubCategoryController::class, 'getSubCategoryById']);
 //product routes
 Route::middleware('auth:sanctum')->get('/products', [ProductController::class, 'getProducts']);
 Route::middleware('auth:sanctum')->post('/add-product', [ProductController::class, 'addProduct']);
