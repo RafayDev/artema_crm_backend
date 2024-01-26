@@ -101,6 +101,7 @@ class ClientInvoiceController extends Controller
         $client_invoice->total = $request->sub_total + $request->frieght_charges + $request->sales_tax;
         $client_invoice->status = 'unpaid';
         $client_invoice->due_date = $request->due_date;
+        $client_invoice->payment_link = $request->payment_link;
         $client_invoice->save();
         $client_invoice_products = $request->invoice_products;
         foreach ($client_invoice_products as $client_invoice_product) {
