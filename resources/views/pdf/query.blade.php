@@ -4,156 +4,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquiry</title>
+    <title>Quotation</title>
     <style>
-        @page {
-            margin: 0px;
-            padding: 0px;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 100px;
-            position: relative;
-        }
+    .header-table {
+        width: 100%;
+    }
 
-        .page-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('./logos/{{$company->company_logo}}');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            z-index: -2;
-        }
+    .header-table,
+    th,
+    td {
+        /* border: 1px solid black; */
+    }
 
-        .opacity-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            opacity: 0.85;
-            pointer-events: none;
-            z-index: -1;
-        }
+    th,
+    td {
+        /* height: 75px; */
+        font-weight: 100;
+    }
 
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eee;
-            padding: 10px;
-            z-index: 1000;
-        }
+    /* Set specific width for each column */
+    .column1 {
+        width: 40%;
+        /* Adjust as needed */
+    }
 
-        .header img {
-            width: 140px;
-            margin-left: 20px; 
-        }
+    .column2 {
+        width: 20%;
+        /* Adjust as needed */
+        text-align: left;
+        vertical-align: top;
+    }
 
-        .container {
-            width: 95%;
-            margin: 2em auto;
-        }
+    .column3 {
+        width: 40%;
+        /* Adjust as needed */
+        text-align: right;
+        vertical-align: top;
+    }
 
-        h1, h2 {
-            margin: 0.5em 0;
-        }
+    .column4 {
+        width: 60%;
+        text-align: left;
+        vertical-align: top;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 24px;
-        }
+    .column5 {
+        width: 40%;
+        text-align: right;
+        vertical-align: top;
+    }
 
-        h2 {
-            text-align: center;
-            font-size: 20px;
-            color: #666;
-        }
+    .bill-to {
+        margin-top: 100px;
+    }
 
-        h3 {
-            text-align: right;
-            font-size: 16px;
-            color: #999;
-        }
+    .down-border {
+        border-bottom: 1px solid black;
+        margin-top: -10px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2em;
-        }
+    .middle-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5em 1em;
-        }
+    .middle-table th {
+        border: 2px solid black;
+        /* text-align: center; */
+        font-weight: light;
+    }
 
-        th {
-            background-color: #f5f5f5;
-        }
+    .middle-table td {
+        border: 2px solid black;
+        /* text-align: center; */
+    }
 
-        td {
-            text-align: center;
-        }
+    .middle-table td:nth-child(1),
+    .middle-table th:nth-child(1) {
+        width: 20%;
+        /* Adjust as needed */
+    }
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 20px 0;
-            z-index: 999;
-        }
+    .middle-table td:nth-child(2),
+    .middle-table th:nth-child(2) {
+        width: 30%;
+        /* Adjust as needed */
+    }
 
-        .footer-content {
-            width: 100%;
-            margin: 0 auto;
-            color: #ecf0f1;
-        }
+    .middle-table td:nth-child(3),
+    .middle-table th:nth-child(3) {
+        width: 25%;
+        /* Adjust as needed */
+    }
 
-        .footer-content p {
-            text-align: center;
-            margin: 10px 0;
-        }
+    .middle-table td:nth-child(4),
+    .middle-table th:nth-child(4) {
+        width: 25%;
+        /* Adjust as needed */
+    }
     </style>
 </head>
 
 <body>
-    <div class="page-background"></div>
-    <div class="opacity-layer"></div>
-
-    <div class="header">
-        <img src="./logos/{{$company->company_logo}}" alt="Company Logo">
+    <table class="header-table">
+        <tr>
+            <td class="column1" style="font-size: 12px; font-weight: light;"><b>{{$company->company_name}}</b><br>
+            {{$company->company_name}}<br>
+            {{$company->company_address}}<br>
+                {{$company->company_phone}}
+                <div class="bill-to">
+                    <p style="font-size:13px;"><b>Quotation From:</b></p>
+                    <div class="down-border"></div>
+                    <p style="margin-top:2px;font-size:13px;">{{$user->name}}</p>
+                </div>
+            </td>
+            <td class="column2" style="text-align: left; font-size:25px; color:#C4C4C4;">Quotation</td>
+            <td class="column3">
+                <img src="./img/logo_2.jpg" alt="Gryphon Medical Solutions LLC" width="200" height="65">
+                <div style="font-weight: light;text-align: left; margin-left:100px; margin-top:40px;">
+                    <p style="font-size:13px;"><b>Quotation #:</b> {{$query->id}}</p>
+                    <p style="font-size:13px; margin-top:-10px;"><b>Quotation Date:</b> {{$query->created_at->format('d-m-Y')}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div style="margin-top:10px">
+        <table class="middle-table" style="text-align:center; font-size:14px;">
+            <tr>
+                <td>Quotation Date</td>
+                <td>Sale Rep</td>
+            </tr>
+            <tr>
+                <th>{{$query->created_at->format('d-m-Y')}}</th>
+                <th>{{$client->name}}</th>
+            </tr>
+        </table>
     </div>
-    
-    <div class="container">
-        <h1>Inquiry</h1>
-        <h2>{{$company->company_name}}</h2>
-        <h3>{{$query->created_at->format('d-m-Y')}}</h3>
-
-        <table style="font-size:14px;">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Product Name</th>
-                    <th>SKU</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $total = 0; @endphp
-                @foreach($queryProducts as $query_product)
+    <div style="margin-top:50px">
+        <table class="middle-table" style="text-align:left; font-size:14px;">
+            <tr>
+                <td>Items</td>
+                <td>Description</td>
+                <td>SKU</td>
+                <td>Size</td>
+                <td>Quantity</td>
+            </tr>
+            @foreach($queryProducts as $query_product)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$query_product->product->product_name}}</td>
@@ -162,19 +159,31 @@
                     <td>{{$query_product->quantity}}</td>
                 </tr>
                 @endforeach
-            </tbody>
         </table>
-        <div style="margin-top:100px"></div>
     </div>
-
-    <div class="footer">
-        <div class="footer-content">
-            <p><strong>Company Address:</strong>{{$company->company_address}}</p>
-            <p><strong>Email:</strong> {{$user->email}}</p>
-            <p><strong>Phone:</strong> {{$company->company_phone}}</p>
-            <p style="font-size:12px; text-align:right;">System Generated</p>
-        </div>
-    </div>
+    <div style="margin-top:50px">
+        <table class="header-table">
+            <tr>
+                <td class="column4">
+                    <div style="font-size: 15px; font-weight: light;">
+                    <p>Thank you for trusting {{$company->company_name}} for your surgical instrumentation needs.</p>
+                    </div>
+                </td>
+                <td class="column5">
+                <!-- <div style="font-weight: light;text-align: left; margin-left:100px;">
+                    <p style="font-size:13px;"><b>Subtotal:</b> $0.00</p>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Sales Tax:&nbsp; $0.00</b> </p>
+                    <div class="down-border"></div>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Total:</b> &nbsp;$0.00 </p>
+                    <p style="font-size:13px; margin-top:-10px;"><b> Payments:</b> &nbsp;$0.00 </p>
+                    <div class="down-border"></div>
+                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Amount Due:</b>&nbsp; $ 0.00</p>
+                    <div class="down-border"></div>
+                </div> -->
+                </td>
+            </tr>
+        </table>
+        <div>
 </body>
 
 </html>
