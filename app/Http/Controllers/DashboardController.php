@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if($user->user_type == 'client' || $user->user_type == 'client-user'){
+        if($user->user_type == 'client' || $user->user_type == 'client_user'){
             $invoices = ClientInvoice::where('company_id',$user->company_id)->count();
             $orders = ClientOrder::where('company_id',$user->company_id)->count();
             $queries = ClientQuery::where('company_id',$user->company_id)->count();
