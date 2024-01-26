@@ -29,7 +29,7 @@ class InvoiceController extends Controller
         if ($user->user_type == 'client') {
             $invoices = Invoice::with('user.company')->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(24);
         }
-        if ($user->user_type == 'client-user') {
+        if ($user->user_type == 'client_user') {
             $company = $user->company;
             $user = User::where('company_id', $company->id)->where('user_type', 'client')->first();
             $invoices = Invoice::with('user.company')->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(24);

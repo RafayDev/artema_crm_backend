@@ -70,7 +70,7 @@ class ClientInvoiceController extends Controller
     public function getPendindApprovalinvoices()
     {
         $user = auth()->user();
-        if($user->user_type == 'client-user'){
+        if($user->user_type == 'client_user'){
             $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','pending-approval')->orderBy('id', 'desc')->get();
             return response()->json([
                 'client_invoices' => $client_invoices

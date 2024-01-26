@@ -12,7 +12,7 @@ class GroupController extends Controller
     {
         $user = auth()->user();
         $search = $request->search;
-        if($user->user_type == 'client-user' || $user->user_type == 'client'){
+        if($user->user_type == 'client_user' || $user->user_type == 'client'){
             if($search != ''){
                 $groups = Group::with('twoLatestUsers')->where('company_id', $user->company_id)->where('name', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(24);
                 return response()->json([
@@ -51,7 +51,7 @@ class GroupController extends Controller
         $group->contact_person = $request->contact_person;
         $group->assigned_to = $request->assigned_to;
         $group->notes = $request->notes;
-        if($user->user_type == 'client-user' || $user->user_type == 'client'){
+        if($user->user_type == 'client_user' || $user->user_type == 'client'){
             $group->company_id = $user->company_id;
         }
         $group->save();
