@@ -129,18 +129,6 @@
             </td>
         </tr>
     </table>
-    <div style="margin-top:10px">
-        <table class="middle-table" style="text-align:center; font-size:14px;">
-            <tr>
-                <td>Quotation Date</td>
-                <td>Sale Rep</td>
-            </tr>
-            <tr>
-                <th>{{$query->created_at->format('d-m-Y')}}</th>
-                <th>{{$client->name}}</th>
-            </tr>
-        </table>
-    </div>
     <div style="margin-top:50px">
         <table class="middle-table" style="text-align:left; font-size:14px;">
             <tr>
