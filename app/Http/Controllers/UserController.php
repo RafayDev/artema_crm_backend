@@ -85,7 +85,7 @@ class UserController extends Controller
     }
     public function getUsers()
     {
-        $user = User::where('user_type', '!=', 'admin')->where('user_type','!=','client_user')->where('user_type','!=','client')->get();
+        $user = User::where('user_type','!=','client_user')->where('user_type','!=','client')->get();
         return response()->json([
             'users' => $user
         ], 200);
