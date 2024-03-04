@@ -141,6 +141,8 @@ class ProductController extends Controller
         {
         //if search's first charchter is number search in product sizes table
             $product_sizes = ProductSize::where('product_sku',  'like', '%' . $search . '%')->get();
+            print_r($product_sizes);
+            exit;
             $products = [];
             foreach ($product_sizes as $product_size) {
                 $product = Product::with('productSizes')->find($product_size->product_id);
