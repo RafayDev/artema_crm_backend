@@ -121,7 +121,7 @@
             </td>
             <td class="column2" style="text-align: left; font-size:25px; color:#C4C4C4;">Quotation</td>
             <td class="column3">
-                <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" width="200" height="65">
+                <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" width="200" height="85">
                 <div style="font-weight: light;text-align: left; margin-left:100px; margin-top:40px;">
                     <p style="font-size:13px;"><b>Quotation #:</b> {{$query->id}}</p>
                     <p style="font-size:13px; margin-top:-10px;"><b>Quotation Date:</b> {{$query->created_at->format('d-m-Y')}}</p>
