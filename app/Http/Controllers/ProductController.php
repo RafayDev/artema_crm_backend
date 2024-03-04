@@ -134,25 +134,14 @@ class ProductController extends Controller
         if ($search == "") {
             return redirect()->back();
         }
-        $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
-        // print_r($products->count());
-        // exit;
-        if($products->count() == 0)
-        {
-        //if search's first charchter is number search in product sizes table
-            $product_sizes = ProductSize::where('product_sku',  'like', '%' . $search . '%')->get();
-            print_r($product_sizes);
-            exit;
-            $products = [];
-            foreach ($product_sizes as $product_size) {
-                $product = Product::with('productSizes')->find($product_size->product_id);
-                if($product)
-                {
-                array_push($products, $product);
-                }
-            }
-            $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
-        }
+    
+        $products = Product::with('productSizes')
+            ->where('product_name', 'like', '%' . $search . '%')
+            ->orWhereHas('productSizes', function ($query) use ($search) {
+                $query->where('product_sku', $search);
+            })
+            ->get();
+    
         return response()->json([
             'products' => $products
         ], 200);
