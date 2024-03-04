@@ -135,8 +135,8 @@ class ProductController extends Controller
             return redirect()->back();
         }
         $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
-        print_r($products->count());
-        exit;
+        // print_r($products->count());
+        // exit;
         if($products->count() == 0)
         {
         //if search's first charchter is number search in product sizes table
