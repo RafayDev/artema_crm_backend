@@ -134,8 +134,10 @@ class ProductController extends Controller
         if ($search == "") {
             return redirect()->back();
         }
+        $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
+        if($products->count() == 0)
+        {
         //if search's first charchter is number search in product sizes table
-        if (is_numeric($search[0])) {
             $product_sizes = ProductSize::where('product_sku', $search)->get();
             $products = [];
             foreach ($product_sizes as $product_size) {
@@ -145,7 +147,6 @@ class ProductController extends Controller
                 array_push($products, $product);
                 }
             }
-        } else {
             $products = Product::with('productSizes')->where('product_description', 'like', '%' . $search . '%')->orwhere('product_name','like','%'.$search.'%')->get();
         }
         return response()->json([
