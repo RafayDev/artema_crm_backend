@@ -140,6 +140,7 @@ class ProductController extends Controller
             ->orWhereHas('productSizes', function ($query) use ($search) {
                 $query->where('product_sku', $search);
             })
+            ->limit(50) // Limiting the number of results to 50
             ->get();
     
         return response()->json([
