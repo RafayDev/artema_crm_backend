@@ -147,8 +147,8 @@ class ProductController extends Controller
                     $query->where('product_sku', 'like', '%' . $search . '%');
                 })
                 ->get();
-                print_r($products);
-                exit;
+                // print_r($products);
+                // exit;
         } else {
             $products = $productsByName;
         }
