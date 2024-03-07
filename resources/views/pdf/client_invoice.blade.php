@@ -222,13 +222,13 @@
                         <div style="font-size: 13px; font-weight: light; margin-top:90px">
                             <p>To pay online, go to {{$client_invoice->payment_link}}</p>
                         </div </div>
-                        <table class="table-header" style="font-weight: light; padding:10px">
+                        <table class="table-header" style="font-weight: light;">
                             <td class="column6">
                                 <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
                             </td>
                             <td class="column7">
                                 <img src="./img/duns.jpg" alt="Gryphon Medical Solutions LLC"
-                                    style="width: 90%; margin-top:-15px;margin-left:-100px">
+                                    style="width: 90%; margin-top:-15px;margin-left:-70px">
                             </td>
                         </table>
                 </td>
@@ -242,10 +242,10 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$client_invoice->sales_tax}}</p>
-                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <!-- <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;${{$client_invoice->frieght_charges}}</p>
+                            &nbsp;&nbsp;&nbsp;${{$client_invoice->frieght_charges}}</p> -->
                         <div class="down-border" style="margin-top:10px;"></div>
                         <p style="font-size:13px; margin-top:10px;"><b> Total</b> &nbsp; &nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
