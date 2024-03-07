@@ -139,7 +139,7 @@
 <body>
     <div style="padding:10px">
         <h2 style="color:#0077c5">INVOICE</h2>
-        <div style="margin-top:20px">
+        <div style="margin-top:5px">
             <table class="header-table">
                 <tr>
                     <td class="column1" style="font-size: 12px; font-weight: light;">
@@ -160,7 +160,7 @@
             </table>
         </div>
     </div>
-    <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
+    <div style="margin-top:0px;background-color:#ebf4fa;padding:10px;">
         <h3 style="color:#0077c5;font-weight:light;">{{$user->name}}</h3>
         <table class="header-table">
             <tr>
