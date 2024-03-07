@@ -161,7 +161,7 @@
         </div>
     </div>
     <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
-        <h3 style="color:#0077c5;font-weight:light;">Courtney Gill</h3>
+        <h3 style="color:#0077c5;font-weight:light;">{{$user->name}}</h3>
         <table class="header-table">
             <tr>
                 <td class="column4" style="font-size: 12px; font-weight: light;">

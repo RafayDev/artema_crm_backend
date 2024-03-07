@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Quotation</title>
     <style>
     .header-table {
         width: 100%;
@@ -24,22 +24,20 @@
 
     /* Set specific width for each column */
     .column1 {
-        width: 40%;
+        width: 25%;
         /* Adjust as needed */
     }
 
     .column2 {
-        width: 20%;
+        width: 25%;
         /* Adjust as needed */
         text-align: left;
-        vertical-align: top;
+        /* vertical-align: top; */
     }
 
     .column3 {
-        width: 40%;
-        /* Adjust as needed */
+        width: 50%;
         text-align: right;
-        vertical-align: top;
     }
 
     .column4 {
@@ -50,8 +48,21 @@
 
     .column5 {
         width: 40%;
-        text-align: right;
+        text-align: left;
         vertical-align: top;
+    }
+
+    .column6 {
+        width: 50%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column7 {
+        width: 50%;
+        text-align: left;
+        vertical-align: top;
+        padding: 10px;
     }
 
     .bill-to {
@@ -59,7 +70,7 @@
     }
 
     .down-border {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #bbb;
         margin-top: -10px;
     }
 
@@ -103,96 +114,149 @@
         width: 25%;
         /* Adjust as needed */
     }
+
+    @page {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        /* padding: 5px; */
+    }
+
+    #product {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #product td,
+    #product th {
+        border-bottom: 1px solid #bbb;
+        padding: 10px;
+    }
     </style>
 </head>
 
 <body>
-    <table class="header-table">
-        <tr>
-            <td class="column1" style="font-size: 12px; font-weight: light;"><b>{{$company->company_name}}</b><br>
-                {{$company->company_name}}<br>
-                {{$company->company_address}}<br>
-                {{$company->company_phone}}
-                <div class="bill-to">
-                    <p style="font-size:13px;"><b>Bill To:</b></p>
-                    <div class="down-border"></div>
-                    <p style="margin-top:2px;font-size:13px;">{{$user->name}}</p>
-                </div>
-            </td>
-            <td class="column2" style="text-align: left; font-size:25px; color:#C4C4C4;">INVOICE</td>
-            <td class="column3">
-                <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" width="200" height="120">
-                <div style="font-weight: light;text-align: left; margin-left:100px; margin-top:40px;">
-                    <p style="font-size:13px;"><b>Invoice #:</b> {{$client_invoice->id}}</p>
-                    <p style="font-size:13px; margin-top:-10px;"><b>Invoice Date:</b> {{$client_invoice->created_at->format('d-m-Y')}}</p>
-                    <div class="down-border"></div>
-                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Due Amount:</b> $ {{$client_invoice->total}}</p>
-                    <div class="down-border"></div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="margin-top:10px">
-        <table class="middle-table" style="text-align:center; font-size:14px;">
-            <tr>
-                <td>Due Date</td>
-                <td>Terms</td>
-                <td>Sale Rep</td>
-            </tr>
-            <tr>
-                <th>{{$client_invoice->due_date}}</th>
-                <th>Due on Receipt</th>
-                <th>{{$client->name}}</th>
-            </tr>
-        </table>
-    </div>
-    <div style="margin-top:50px">
-        <table class="middle-table" style="text-align:left; font-size:14px;">
-        <tr>
-                    <th>#</th>
-                    <th>Product Name</th>
-                    <th>SKU</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                    <th>Price ($)</th>
-                    <th>Total ($)</th>
-                </tr>
-                @php $total = 0; @endphp
-                @foreach($client_invoice_products as $invoice_product)
+    <div style="padding:10px">
+        <h2 style="color:#0077c5">INVOICE</h2>
+        <div style="margin-top:20px">
+            <table class="header-table">
                 <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$invoice_product->product->product_name}}</td>
-                    <td>{{$invoice_product->sku}}</td>
-                    <td>{{$invoice_product->size}}</td>
-                    <td>{{$invoice_product->quantity}}</td>
-                    <td style="width:20%">{{$invoice_product->price}} $</td>
-                    <td style="width:20%">{{$invoice_product->total}} $</td>
+                    <td class="column1" style="font-size: 12px; font-weight: light;">
+                        <b>{{$company->company_name}}</b><br>
+                        {{$company->company_address}}
+                    </td>
+                    <td class="column2" style="font-size: 12px; font-weight: light;">
+                        <div style="margin-top:-15px">
+                            {{$company->email}}<br>
+                            {{$company->company_phone}}<br>
+                            {{$company->website}}
+                        </div>
+                    </td>
+                    <td class="column3">
+                        <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" style="width: 90%;">
+                    </td>
                 </tr>
-                @endforeach
-        </table>
+            </table>
+        </div>
     </div>
-    <div style="margin-top:50px">
+    <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
+        <h3 style="color:#0077c5;font-weight:light;">{{$user->name}}</h3>
         <table class="header-table">
             <tr>
-                <td class="column4">
-                    <div style="font-size: 15px; font-weight: light;">
-                    <p>Thank you for trusting {{$company->company_name}} for your surgical instrumentation needs.</p>
-                    </div>
-                    <div style="font-size: 13px; font-weight: light; margin-top:90px">
-                        <p>To pay online, go to {{$client_invoice->payment_link}}</p>
-                    </div>
+                <td class="column4" style="font-size: 12px; font-weight: light;">
+                    <b>Bill to</b><br>
+                    {{$user->name}}<br>
+                    {{$user->address}}
+
                 </td>
-                <td class="column5">
-                <div style="font-weight: light;text-align: left; margin-left:100px;">
-                    <p style="font-size:13px;"><b>Subtotal:</b> ${{$client_invoice->sub_total}}</p>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Sales Tax:&nbsp; $ {{$client_invoice->sales_tax}}</b> </p>
-                    <div class="down-border"></div>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Frieght Charges:</b> &nbsp;$ {{$client_invoice->frieght_charges}} </p>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Payments:</b> &nbsp;$ {{$client_invoice->total}} </p>
-                    <div class="down-border"></div>
-                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Amount Due:</b>&nbsp; $ {{$client_invoice->total}}</p>
-                    <div class="down-border"></div>
-                </div>
+                <td class="column5" style="font-size: 12px; font-weight: light;">
+                    <b>Ship to</b><br>
+                    {{$user->name}}<br>
+                    {{$user->address}}
+                </td>
+            </tr>
+        </table>
+        <hr style="border-top: 1px solid #bbb; margin-top:40px;margin-bottom:30px;">
+        <div style="font-size: 12px; font-weight: light; margin-bottom:30px;">
+            <b> Invoice details</b><br>
+            Invoice no.: {{$client_invoice->id}}<br>
+            Invoice date: {{$client_invoice->created_at->format('d-m-Y')}}<br>
+            Due date: {{$client_invoice->due_date}}
+        </div>
+    </div>
+    <div style="margin-top:30px">
+        <table id="product">
+            <tr>
+                <td>#</td>
+                <td>Date</td>
+                <td>Product or Service</td>
+                <td>SKU</td>
+                <td>Qty</td>
+                <td>Rate</td>
+                <td>Amount</td>
+            </tr>
+            <tr>
+                <td style="font-weight:light;">{{$loop->iteration}}</td>
+                <td style="font-weight:light;"></td>
+                <td style="font-weight:light;">
+                    {{$invoice_product->product->category->category_name}}<br>{{$invoice_product->product->product_name}}
+                </td>
+                <td style="font-weight:light;">{{$invoice_product->sku}}</td>
+                <td style="font-weight:light;">{{$invoice_product->size}}</td>
+                <td style="font-weight:light;">{{$invoice_product->quantity}}</td>
+                <td style="font-weight:light;">${{$invoice_product->price}}</td>
+                <td style="font-weight:light;">${{$invoice_product->total}}</td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top:10px">
+        <table class="header-table">
+            <tr>
+                <td class="column6">
+                    <div style="font-weight: light; padding:10px">
+                        <p style="font-size: 18px;">Note to customer</p>
+                        <p style="font-size: 12px;">Thank you for considering {{$company->company_name}} to meet
+                            your surgical instruments needs!</p>
+                        <div style="font-size: 13px; font-weight: light; margin-top:90px">
+                            <p>To pay online, go to {{$client_invoice->payment_link}}</p>
+                        </div </div>
+                        <table class="table-header" style="font-weight: light; padding:10px">
+                            <td class="column6">
+                                <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
+                            </td>
+                            <td class="column7">
+                                <img src="./img/duns.jpg" alt="Gryphon Medical Solutions LLC"
+                                    style="width: 90%; margin-top:-15px;margin-left:-100px">
+                            </td>
+                        </table>
+                </td>
+                <td class="column7">
+                    <div style="font-weight: light;text-align: left; margin-left:100px;">
+                        <p style="font-size:13px;">Subtotal &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; ${{$client_invoice->sub_total}}</p><br>
+                        <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;${{$client_invoice->sales_tax}}</p>
+                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;${{$client_invoice->frieght_charges}}</p>
+                        <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"><b> Total</b> &nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<b style="font-size:16px">${{$client_invoice->total}}</b>
+                        </p>
+                        <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"> Due date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;{{$client_invoice->due_date}}</p>
+                    </div>
                 </td>
             </tr>
         </table>
