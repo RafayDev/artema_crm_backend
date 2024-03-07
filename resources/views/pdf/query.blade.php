@@ -202,7 +202,7 @@
             <tr>
                 <td style="font-weight:light;">{{$loop->iteration}}</td>
                 <td style="font-weight:light;"></td>
-                <td style="font-weight:light;">{{$query_product->category->category_name}}<br>{{$query_product->product->product_name}}</td>
+                <td style="font-weight:light;">{{$query_product->product->category->category_name}}<br>{{$query_product->product->product_name}}</td>
                 <td style="font-weight:light;">{{$query_product->sku}}/td>
                 <td style="font-weight:light;">{{$query_product->quantity}}</td>
                 <!-- <td style="font-weight:light;">$150.00</td>
