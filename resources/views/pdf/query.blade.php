@@ -150,7 +150,7 @@
                         <div style="margin-top:-15px">
                         {{$company->email}}<br>
                             {{$company->company_phone}}<br>
-                            {{$company->wesite}}
+                            {{$company->website}}
                         </div>
                     </td>
                     <td class="column3">
