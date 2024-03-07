@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotation</title>
+    <title>Invoice</title>
     <style>
     .header-table {
         width: 100%;
@@ -219,8 +219,6 @@
                         <p style="font-size: 18px;">Note to customer</p>
                         <p style="font-size: 12px;">Thank you for considering {{$company->company_name}} to meet
                             your surgical instruments needs!</p>
-                        <div style="font-size: 13px; font-weight: light; margin-top:90px">
-                            <p>To pay online, go to {{$client_invoice->payment_link}}</p>
                         </div </div>
                         <table class="table-header" style="font-weight: light;">
                             <td class="column6">
