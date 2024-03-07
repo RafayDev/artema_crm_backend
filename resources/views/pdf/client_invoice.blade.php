@@ -204,7 +204,6 @@
                     {{$invoice_product->product->category->category_name}}<br>{{$invoice_product->product->product_name}}
                 </td>
                 <td style="font-weight:light;">{{$invoice_product->sku}}</td>
-                <td style="font-weight:light;">{{$invoice_product->size}}</td>
                 <td style="font-weight:light;">{{$invoice_product->quantity}}</td>
                 <td style="font-weight:light;">${{$invoice_product->price}}</td>
                 <td style="font-weight:light;">${{$invoice_product->total}}</td>
