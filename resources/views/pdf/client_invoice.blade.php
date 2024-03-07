@@ -196,7 +196,7 @@
                 <td>Rate</td>
                 <td>Amount</td>
             </tr>
-            @foreach($client_invoice->invoiceProducts as $invoice_product)
+            @foreach($client_invoice_products as $invoice_product)
             <tr>
                 <td style="font-weight:light;">{{$loop->iteration}}</td>
                 <td style="font-weight:light;"></td>
