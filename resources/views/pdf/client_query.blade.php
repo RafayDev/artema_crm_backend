@@ -24,22 +24,20 @@
 
     /* Set specific width for each column */
     .column1 {
-        width: 40%;
+        width: 25%;
         /* Adjust as needed */
     }
 
     .column2 {
-        width: 20%;
+        width: 25%;
         /* Adjust as needed */
         text-align: left;
-        vertical-align: top;
+        /* vertical-align: top; */
     }
 
     .column3 {
-        width: 40%;
-        /* Adjust as needed */
+        width: 50%;
         text-align: right;
-        vertical-align: top;
     }
 
     .column4 {
@@ -50,8 +48,21 @@
 
     .column5 {
         width: 40%;
-        text-align: right;
+        text-align: left;
         vertical-align: top;
+    }
+
+    .column6 {
+        width: 50%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column7 {
+        width: 50%;
+        text-align: left;
+        vertical-align: top;
+        padding: 10px;
     }
 
     .bill-to {
@@ -59,7 +70,7 @@
     }
 
     .down-border {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #bbb;
         margin-top: -10px;
     }
 
@@ -103,83 +114,141 @@
         width: 25%;
         /* Adjust as needed */
     }
+
+    @page {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        /* padding: 5px; */
+    }
+
+    #product {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #product td,
+    #product th {
+        border-bottom: 1px solid #bbb;
+        padding: 10px;
+    }
     </style>
 </head>
 
 <body>
-    <table class="header-table">
-        <tr>
-            <td class="column1" style="font-size: 12px; font-weight: light;"><b>{{$company->company_name}}</b><br>
-            {{$company->company_name}}<br>
-            {{$company->company_address}}<br>
-                {{$company->company_phone}}
-                <div class="bill-to">
-                    <p style="font-size:13px;"><b>Quotation From:</b></p>
-                    <div class="down-border"></div>
-                    <p style="margin-top:2px;font-size:13px;">{{$user->name}}</p>
-                </div>
-            </td>
-            <td class="column2" style="text-align: left; font-size:25px; color:#C4C4C4;">Quotation</td>
-            <td class="column3">
-                <img src="./logos/{{$company->company_logo}}"" alt="Gryphon Medical Solutions LLC" width="200" height="115">
-                <div style="font-weight: light;text-align: left; margin-left:100px; margin-top:40px;">
-                    <p style="font-size:13px;"><b>Quotation #:</b> {{$query->id}}</p>
-                    <p style="font-size:13px; margin-top:-10px;"><b>Quotation Date:</b> {{$query->created_at->format('d-m-Y')}}</p>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="margin-top:10px">
-        <table class="middle-table" style="text-align:center; font-size:14px;">
-            <tr>
-                <td>Quotation Date</td>
-                <td>Sale Rep</td>
-            </tr>
-            <tr>
-                <th>{{$query->created_at->format('d-m-Y')}}</th>
-                <th>{{$client->name}}</th>
-            </tr>
-        </table>
-    </div>
-    <div style="margin-top:50px">
-        <table class="middle-table" style="text-align:left; font-size:14px;">
-            <tr>
-                <td>Items</td>
-                <td>Description</td>
-                <td>SKU</td>
-                <td>Size</td>
-                <td>Quantity</td>
-            </tr>
-            @foreach($queryProducts as $query_product)
+    <div style="padding:10px">
+        <h2 style="color:#0077c5">ESTIMATE</h2>
+        <div style="margin-top:20px">
+            <table class="header-table">
                 <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$query_product->product->product_name}}</td>
-                    <td>{{$query_product->sku}}</td>
-                    <td>{{$query_product->size}}</td>
-                    <td>{{$query_product->quantity}}</td>
+                    <td class="column1" style="font-size: 12px; font-weight: light;">
+                        <b>{{$company->company_name}}</b><br>
+                        {{$company->company_address}}
+                    </td>
+                    <td class="column2" style="font-size: 12px; font-weight: light;">
+                        <div style="margin-top:-15px">
+                        {{$company->email}}<br>
+                            {{$company->company_phone}}<br>
+                            {{$company->website}}
+                        </div>
+                    </td>
+                    <td class="column3">
+                        <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" style="width: 90%;">
+                    </td>
                 </tr>
-                @endforeach
-        </table>
+            </table>
+        </div>
     </div>
-    <div style="margin-top:50px">
+    <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
+        <h3 style="color:#0077c5;font-weight:light;">Courtney Gill</h3>
         <table class="header-table">
             <tr>
-                <td class="column4">
-                    <div style="font-size: 15px; font-weight: light;">
-                    <p>Thank you for trusting {{$company->company_name}} for your surgical instrumentation needs.</p>
-                    </div>
+                <td class="column4" style="font-size: 12px; font-weight: light;">
+                    <b>Bill to</b><br>
+                    {{$user->name}}<br>
+                    {{$user->address}}
+
                 </td>
-                <td class="column5">
-                <!-- <div style="font-weight: light;text-align: left; margin-left:100px;">
-                    <p style="font-size:13px;"><b>Subtotal:</b> $0.00</p>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Sales Tax:&nbsp; $0.00</b> </p>
-                    <div class="down-border"></div>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Total:</b> &nbsp;$0.00 </p>
-                    <p style="font-size:13px; margin-top:-10px;"><b> Payments:</b> &nbsp;$0.00 </p>
-                    <div class="down-border"></div>
-                    <p style="font-size:13px; margin-top:2px; background-color:#E5E5E5 ;"><b>Amount Due:</b>&nbsp; $ 0.00</p>
-                    <div class="down-border"></div>
-                </div> -->
+                <td class="column5" style="font-size: 12px; font-weight: light;">
+                    <b>Ship to</b><br>
+                    {{$user->name}}<br>
+                    {{$user->address}}
+                </td>
+            </tr>
+        </table>
+        <hr style="border-top: 1px solid #bbb; margin-top:40px;margin-bottom:30px;">
+        <div style="font-size: 12px; font-weight: light; margin-bottom:30px;">
+            <b> Estimate details</b><br>
+            Estimate no.: {{$query->id}}<br>
+            Estimate date: {{$query->created_at->format('d-m-Y')}}<br>
+            Expiration date:  {{$query->created_at->addDays(7)->format('d-m-Y')}}
+        </div>
+    </div>
+    <div style="margin-top:30px">
+        <table id="product">
+            <tr>
+                <td>#</td>
+                <td>Date</td>
+                <td>Product or Service</td>
+                <td>SKU</td>
+                <td>Qty</td>
+                <!-- <td>Rate</td>
+                <td>Amount</td> -->
+            </tr>
+            @foreach($queryProducts as $query_product)
+            <tr>
+                <td style="font-weight:light;">{{$loop->iteration}}</td>
+                <td style="font-weight:light;"></td>
+                <td style="font-weight:light;">{{$query_product->product->category->category_name}}<br>{{$query_product->product->product_name}}</td>
+                <td style="font-weight:light;">{{$query_product->sku}}</td>
+                <td style="font-weight:light;">{{$query_product->quantity}}</td>
+                <!-- <td style="font-weight:light;">$150.00</td>
+                <td style="font-weight:light;">$750.00</td> -->
+            </tr>
+            @endforeach
+        </table>
+    </div>
+    <div style="margin-top:10px">
+        <table class="header-table">
+            <tr>
+                <td class="column6">
+                    <div style="font-weight: light; padding:10px">
+                        <p style="font-size: 18px;">Note to customer</p>
+                        <p style="font-size: 12px;">Thank you for considering {{$company->company_name}} to meet
+                            your surgical instruments needs!</p>
+                    </div>
+                    <table class="table-header" style="font-weight: light; padding:10px">
+                        <td class="column6">
+                        <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
+                        </td>
+                        <td class="column7">
+                        <img src="./img/duns.jpg" alt="Gryphon Medical Solutions LLC" style="width: 90%; margin-top:-15px;margin-left:-100px">
+                        </td>
+                    </table>
+                </td>
+                <td class="column7">
+                    <div style="font-weight: light;text-align: left; margin-left:100px;">
+                        <!-- <p style="font-size:13px;">Subtotal &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; $0.00</p><br>
+                        <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;$100000.00</p>
+                        <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"><b> Total</b> &nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<b style="font-size:16px">$0.00</b>
+                        </p> -->
+                        <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"> Expiry date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;{{$query->created_at->addDays(7)->format('d-m-Y')}}</p>
+                    </div>
                 </td>
             </tr>
         </table>
