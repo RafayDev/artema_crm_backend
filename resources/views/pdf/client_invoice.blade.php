@@ -212,7 +212,7 @@
             @endforeach
         </table>
     </div>
-    <div style="margin-top:10px">
+    <div style="margin-top:0px">
         <table class="header-table">
             <tr>
                 <td class="column6">
@@ -241,9 +241,9 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; ${{$client_invoice->sub_total}}</p><br>
                         <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$client_invoice->sales_tax}}</p>
-                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$client_invoice->frieght_charges}}</p>
