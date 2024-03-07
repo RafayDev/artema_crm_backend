@@ -154,7 +154,7 @@
                         </div>
                     </td>
                     <td class="column3">
-                        <img src="./logos/{{$company->company_logo}} alt="Gryphon Medical Solutions LLC" style="width: 90%;">
+                        <img src="./logos/{{$company->company_logo}}" alt="Gryphon Medical Solutions LLC" style="width: 90%;">
                     </td>
                 </tr>
             </table>
