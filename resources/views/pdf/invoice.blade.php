@@ -184,7 +184,6 @@
             <b> Invoice details</b><br>
             Invoice no.: AML-{{$invoice->id}}<br>
             Invoice date: {{$invoice->created_at->format('d-m-Y')}}<br>
-            <!-- Due date: {{$client_invoice->due_date}} -->
         </div>
     </div>
     <div style="margin-top:30px">
