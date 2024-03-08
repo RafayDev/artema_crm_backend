@@ -206,7 +206,6 @@
                     {{$invoice_product->product->category->category_name}}<br>{{$invoice_product->product->product_name}}
                 </td>
                 <td style="font-weight:light;">{{$invoice_product->sku}}</td>
-                <td style="font-weight:light;">{{$invoice_product->size}}</td>
                 <td style="font-weight:light;">{{$invoice_product->quantity}}</td>
                 <td style="font-weight:light;">${{$invoice_product->price}}</td>
                 <td style="font-weight:light;">${{$invoice_product->total}}</td>
@@ -222,7 +221,7 @@
                         <p style="font-size: 18px;">Note to customer</p>
                         <p style="font-size: 12px;">Thank you for considering Artema Medical Group to meet
                             your surgical instruments needs!</p>
-                        <!-- <table class="table-header" style="font-weight: light; padding:10px">
+                        <table class="table-header" style="font-weight: light; padding:10px">
                             <td class="column6">
                                 <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
                             </td>
@@ -230,7 +229,7 @@
                                 <img src="./img/duns.jpg" alt="Gryphon Medical Solutions LLC"
                                     style="width: 90%; margin-top:-15px;margin-left:-100px">
                             </td>
-                        </table> -->
+                        </table>
                 </td>
                 <td class="column7">
                     <div style="font-weight: light;text-align: left; margin-left:100px;">
