@@ -198,9 +198,7 @@
                 <td>Amount</td>
             </tr>
             @foreach($invoiceProducts as $invoice_product)
-                @php
-                $total += $invoice_product->total_price;
-                @endphp
+               
             <tr>
                 <td style="font-weight:light;">{{$loop->iteration}}</td>
                 <td style="font-weight:light;"></td>
