@@ -4,239 +4,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Quotation</title>
     <style>
-    @page {
-        margin: 10px;
-        padding: 5px;
-    }
-
-    body {
-        font-family: 'Arial', sans-serif;
-        color: #671b1d;
-        margin: 0;
-        padding: 0;
-    }
-
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        border-bottom: 1px solid #ddd;
-        padding: 0 50px;
-        background-color: #fff;
-        z-index: 1000;
-    }
-
-    .footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        border-top: 1px solid #ddd;
-        background-color: #fff;
-        box-sizing: border-box;
-        /* padding: 15px; */
-        text-align: center;
-        z-index: 1000;
+    .header-table {
         width: 100%;
     }
 
-    .container {
-        padding-top: 120px;
-        padding-bottom: 130px;
-        margin: 0 auto;
-    }
-
-
-    .logo img {
-        width: 200px;
-        margin-left: -50px;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
+    .header-table,
+    th,
+    td {
+        /* border: 1px solid black; */
     }
 
     th,
     td {
-        padding: 8px 15px;
+        /* height: 75px; */
+        font-weight: 100;
     }
 
-    th,
-    td {
-        border: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #f3f3f3;
-        color: #671b1d;
-    }
-
-    .total-row {
-        background-color: #f3f3f3;
-    }
-
-    .total-row td {
-        font-weight: bold;
-        color: #671b1d;
-    }
-
-    .footer-section,
-    .footer-contact {
-        display: inline-block;
-        vertical-align: top;
+    /* Set specific width for each column */
+    .column1 {
         width: 25%;
-        margin-top: 5px;
-        margin-left:20px;
-        margin-right:20px;
-        box-sizing: border-box;
-        font-size: 14px;
+        /* Adjust as needed */
     }
 
-    address {
-        display: block;
-        margin: 5px 0;
+    .column2 {
+        width: 25%;
+        /* Adjust as needed */
+        text-align: left;
+        /* vertical-align: top; */
     }
 
-    .footer-notice {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 12px;
-        color: #888;
-    }
-    .invoice-header {
-        border-collapse: collapse;
-        margin-bottom: 30px;
+    .column3 {
+        width: 50%;
+        text-align: right;
     }
 
-    .invoice-header td {
+    .column4 {
+        width: 60%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column5 {
+        width: 40%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column6 {
+        width: 50%;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .column7 {
+        width: 50%;
+        text-align: left;
         vertical-align: top;
         padding: 10px;
-        font-size: 14px;
-        color: #666;
-        border: none;
+    }
+
+    .bill-to {
+        margin-top: 100px;
+    }
+
+    .down-border {
+        border-bottom: 1px solid #bbb;
+        margin-top: -10px;
+    }
+
+    .middle-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+
+    .middle-table th {
+        border: 2px solid black;
+        /* text-align: center; */
+        font-weight: light;
+    }
+
+    .middle-table td {
+        border: 2px solid black;
+        /* text-align: center; */
+    }
+
+    .middle-table td:nth-child(1),
+    .middle-table th:nth-child(1) {
+        width: 20%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(2),
+    .middle-table th:nth-child(2) {
+        width: 30%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(3),
+    .middle-table th:nth-child(3) {
+        width: 25%;
+        /* Adjust as needed */
+    }
+
+    .middle-table td:nth-child(4),
+    .middle-table th:nth-child(4) {
+        width: 25%;
+        /* Adjust as needed */
+    }
+
+    @page {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        /* padding: 5px; */
+    }
+
+    #product {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #product td,
+    #product th {
+        border-bottom: 1px solid #bbb;
+        padding: 10px;
     }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src="./img/logo.png" alt="Company Logo">
+    <div style="padding:10px">
+        <h2 style="color:#0077c5">INVOICE</h2>
+        <div style="margin-top:20px">
+            <table class="header-table">
+                <tr>
+                    <td class="column1" style="font-size: 12px; font-weight: light;">
+                        <b>Artema Medical Group</b><br>
+                        7901 4th St. N STE 10963,Saint Petersburg, Florida, 33702
+                    </td>
+                    <td class="column2" style="font-size: 12px; font-weight: light;">
+                        <div style="margin-top:-15px">
+                        sales@artemamedical.com<br>
+                        +1 352-778-1116<br>
+                     www.artemamed.com
+                        </div>
+                    </td>
+                    <td class="column3">
+                        <img src="./img/logo.png" alt="Artema Medical Solutions LLC" style="width: 90%;">
+                    </td>
+                </tr>
+            </table>
         </div>
-        <h1>Invoice</h1>
     </div>
+    <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
+        <h3 style="color:#0077c5;font-weight:light;">{{$user->name}}</h3>
+        <table class="header-table">
+            <tr>
+                <td class="column4" style="font-size: 12px; font-weight: light;">
+                    <b>Bill to</b><br>
+                    {{$user->name}}<br>
+                    {{$company->company_name}}<br>
+                    {{$user->address}}
 
-    <div class="container">
-        <!-- Invoice Info -->
-        @php
-        $total = 0;
-        @endphp
-        <table class="invoice-header">
-            <tbody>
-                <tr>
-                    <td width="50%">
-                        <strong>Company Name:</strong>
-                        {{$company->company_name}}<br>
-
-                        <strong>Client Name:</strong>
-                        {{$user->name}}<br>
-
-                        <strong>Email:</strong>
-                        {{$user->email}}<br>
-
-                        <strong>Phone:</strong>
-                        {{$company->company_phone}}<br>
-
-                        <strong>Address:</strong>
-                        {{$company->company_address}}
-                    </td>
-                    <td width="50%" style="text-align: right;">
-                        <strong>Date:</strong>
-                        {{$invoice->created_at->format('d-m-Y')}}<br>
-
-                        <strong>Invoice No:</strong>
-                        AML-{{$invoice->id}}
-                    </td>
-                </tr>
-            </tbody>
+                </td>
+                <td class="column5" style="font-size: 12px; font-weight: light;">
+                    <b>Ship to</b><br>
+                    {{$user->name}}<br>
+                    {{$company->company_name}}<br>
+                    {{$user->address}}
+                </td>
+            </tr>
         </table>
-
-        <!-- Product Info -->
-        <table style="text-align:center; font-size:14px; ">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Product Name</th>
-                    <th>SKU</th>
-                    <th>Size</th>
-                    <th>Price Per Unit ($)</th>
-                    <th>Quantity</th>
-                    <th>Total Price ($)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($invoiceProducts as $invoice_product)
+        <hr style="border-top: 1px solid #bbb; margin-top:40px;margin-bottom:30px;">
+        <div style="font-size: 12px; font-weight: light; margin-bottom:30px;">
+            <b> Invoice details</b><br>
+            Invoice no.: AML-{{$invoice->id}}<br>
+            Invoice date: {{$invoice->created_at->format('d-m-Y')}}<br>
+            <!-- Due date: {{$client_invoice->due_date}} -->
+        </div>
+    </div>
+    <div style="margin-top:30px">
+        <table id="product">
+            <tr>
+                <td>#</td>
+                <td>Date</td>
+                <td>Product or Service</td>
+                <td>SKU</td>
+                <td>Qty</td>
+                <td>Rate</td>
+                <td>Amount</td>
+            </tr>
+            @foreach($invoiceProducts as $invoice_product)
                 @php
                 $total += $invoice_product->total_price;
                 @endphp
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$invoice_product->product->product_name}}</td>
-                    <td>{{$invoice_product->sku}}</td>
-                    <td>{{$invoice_product->size}}</td>
-                    <td>{{$invoice_product->price}} $</td>
-                    <td>{{$invoice_product->quantity}}</td>
-                    <td>{{$invoice_product->total}} $</td>
-                </tr>
-                @endforeach
-                    <tr class="total-row">
-                        <td colspan="6">Sales Tax ($)</td>
-                        <td>{{$invoice->sales_tax}} $</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6">Freight Charges($)</td>
-                        <td>{{$invoice->frieght_charges}} $</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6">Total ($)</td>
-                        <td>{{$invoice->total}} $</td>
-                    </tr>
-            </tbody>
+            <tr>
+                <td style="font-weight:light;">{{$loop->iteration}}</td>
+                <td style="font-weight:light;"></td>
+                <td style="font-weight:light;">
+                    {{$invoice_product->product->category->category_name}}<br>{{$invoice_product->product->product_name}}
+                </td>
+                <td style="font-weight:light;">{{$invoice_product->sku}}</td>
+                <td style="font-weight:light;">{{$invoice_product->size}}</td>
+                <td style="font-weight:light;">{{$invoice_product->quantity}}</td>
+                <td style="font-weight:light;">${{$invoice_product->price}}</td>
+                <td style="font-weight:light;">${{$invoice_product->total}}</td>
+            </tr>
+            @endforeach
         </table>
     </div>
-
-    <div class="footer">
-        <div class="footer-section">
-            <strong>Pakistan Office</strong>
-            <address>J-371 DHA EME Canal Bank Road,Lahore</address>
-        </div>
-        <div class="footer-section">
-            <strong>Head Office</strong>
-            <address>7901 4th St. N STE 10963,Saint Petersburg, Florida, 33702</address>
-        </div>
-        <div class="footer-section">
-            <strong>UK Office</strong>
-            <address>UNIT 2 65 ALEXANDRA ROAD SLOUGH SL1 2NQ</address>
-        </div>
-        <div style="margin-top:20px">
-            <span><strong>Email:</strong> sales@artemamedical.com</span>
-            <span><strong>Phone:</strong> + 1 (210) 468 7779</span>
-        </div>
-        <div class="footer-notice">
-            System Generated Invoice
-        </div>
-    </div>
+    <div style="margin-top:10px">
+        <table class="header-table">
+            <tr>
+                <td class="column6">
+                    <div style="font-weight: light; padding:10px">
+                        <p style="font-size: 18px;">Note to customer</p>
+                        <p style="font-size: 12px;">Thank you for considering Artema Medical Group to meet
+                            your surgical instruments needs!</p>
+                        <!-- <table class="table-header" style="font-weight: light; padding:10px">
+                            <td class="column6">
+                                <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
+                            </td>
+                            <td class="column7">
+                                <img src="./img/duns.jpg" alt="Gryphon Medical Solutions LLC"
+                                    style="width: 90%; margin-top:-15px;margin-left:-100px">
+                            </td>
+                        </table> -->
+                </td>
+                <td class="column7">
+                    <div style="font-weight: light;text-align: left; margin-left:100px;">
+                        <p style="font-size:13px;">Subtotal &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; ${{$invoice->sub_total}}</p><br>
+                        <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;${{$invoice->sales_tax}}</p>
+                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;${{$invoice->frieght_charges}}</p>
+                        <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"><b> Total</b> &nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<b style="font-size:16px">${{$invoice->total}}</b>
+                        </p>
+                        <!-- <div class="down-border" style="margin-top:10px;"></div>
+                        <p style="font-size:13px; margin-top:10px;"> Due date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;{{$client_invoice->due_date}}</p> -->
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div>
 </body>
 
 </html>
