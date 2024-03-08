@@ -234,7 +234,7 @@
                 <td class="column7">
                     <div style="font-weight: light;text-align: left; margin-left:100px;">
                         <p style="font-size:13px;">Subtotal &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; ${{$invoice->sub_total}}</p><br>
                         <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
