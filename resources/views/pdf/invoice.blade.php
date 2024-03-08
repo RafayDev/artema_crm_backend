@@ -168,14 +168,14 @@
                     <b>Bill to</b><br>
                     {{$user->name}}<br>
                     {{$company->company_name}}<br>
-                    {{$user->address}}
+                    {{$company->company_address}}
 
                 </td>
                 <td class="column5" style="font-size: 12px; font-weight: light;">
                     <b>Ship to</b><br>
                     {{$user->name}}<br>
                     {{$company->company_name}}<br>
-                    {{$user->address}}
+                    {{$company->company_address}}
                 </td>
             </tr>
         </table>
@@ -237,11 +237,11 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; ${{$invoice->sub_total}}</p><br>
-                        <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <p style="font-size:13px; margin-top:-10px;"> Sales Tax &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$invoice->sales_tax}}</p>
-                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$invoice->frieght_charges}}</p>
