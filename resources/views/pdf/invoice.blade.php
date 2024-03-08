@@ -256,7 +256,7 @@
                         <p style="font-size:13px; margin-top:10px;"> Due date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;{{$client_invoice->due_date}}</p> -->
+                            &nbsp;{{$invoice->due_date}}</p> -->
                     </div>
                 </td>
             </tr>
