@@ -138,7 +138,7 @@
 
 <body>
     <div style="padding:10px">
-        <h2 style="color:#0077c5">INVOICE</h2>
+        <h2 style="color:#f68b1e">INVOICE</h2>
         <div style="margin-top:20px">
             <table class="header-table">
                 <tr>
@@ -160,7 +160,7 @@
             </table>
         </div>
     </div>
-    <div style="margin-top:10px;background-color:#fcead9;padding:10px;">
+    <div style="margin-top:0px;background-color:#fcead9;padding:10px;">
         <h3 style="color:#f68b1e;font-weight:light;">{{$user->name}}</h3>
         <table class="header-table">
             <tr>
@@ -214,7 +214,7 @@
             @endforeach
         </table>
     </div>
-    <div style="margin-top:10px">
+    <div style="margin-top:0px">
         <table class="header-table">
             <tr>
                 <td class="column6">
