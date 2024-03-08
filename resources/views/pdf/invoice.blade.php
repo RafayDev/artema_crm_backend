@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotation</title>
+    <title>Invoice</title>
     <style>
     .header-table {
         width: 100%;
@@ -241,7 +241,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$invoice->sales_tax}}</p>
-                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <p style="font-size:13px; margin-top:-10px;"> Frieght Charges &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;${{$invoice->frieght_charges}}</p>
