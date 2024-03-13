@@ -139,7 +139,7 @@
 <body>
     <div style="padding:10px">
         <h2 style="color:#0077c5">REQUEST FOR QUOTE</h2>
-        <div style="margin-top:20px">
+        <div style="margin-top:5px">
             <table class="header-table">
                 <tr>
                     <td class="column1" style="font-size: 12px; font-weight: light;">
