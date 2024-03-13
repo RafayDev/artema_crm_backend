@@ -179,18 +179,18 @@
         </table>
         <hr style="border-top: 1px solid #bbb; margin-top:40px;margin-bottom:30px;">
         <div style="font-size: 12px; font-weight: light; margin-bottom:30px;">
-            <b> Estimate details</b><br>
-            Estimate no.: {{$query->id}}<br>
-            Estimate date: {{$query->created_at->format('d-m-Y')}}<br>
+            <b> Qoute details</b><br>
+            Qoute no.: {{$query->id}}<br>
+            Qoute date: {{$query->created_at->format('d-m-Y')}}<br>
             Expiration date:  {{$query->created_at->addDays(7)->format('d-m-Y')}}
         </div>
     </div>
-    <div style="margin-top:30px">
+    <div style="margin-top:0px">
         <table id="product">
             <tr>
                 <td>#</td>
                 <td>Date</td>
-                <td>Product or Service</td>
+                <td>Product Name</td>
                 <td>SKU</td>
                 <td>Qty</td>
                 <!-- <td>Rate</td>
@@ -209,7 +209,7 @@
             @endforeach
         </table>
     </div>
-    <div style="margin-top:10px">
+    <div style="margin-top:0px">
         <table class="header-table">
             <tr>
                 <td class="column6">
