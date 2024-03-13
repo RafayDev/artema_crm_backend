@@ -160,7 +160,7 @@
             </table>
         </div>
     </div>
-    <div style="margin-top:10px;background-color:#ebf4fa;padding:10px;">
+    <div style="margin-top:0px;background-color:#ebf4fa;padding:10px;">
         <h3 style="color:#0077c5;font-weight:light;">{{$user->name}}</h3>
         <table class="header-table">
             <tr>
