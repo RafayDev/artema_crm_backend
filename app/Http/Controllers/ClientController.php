@@ -100,6 +100,19 @@ class ClientController extends Controller
             file_put_contents($pathLogo, $decoded_logo);
             $company->company_logo = $fileNameLogo;
         }
+        if($request->image)
+        {
+            $exploded_image = explode(',', $request->image);
+            $decoded_image = base64_decode($exploded_image[1]);
+            if (str_contains($exploded_image[0], 'jpeg'))
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+            $fileNameImage = Str::random() . '.' . $extension;
+            $pathImage = public_path() . '/client_images/' . $fileNameImage;
+            file_put_contents($pathImage, $decoded_image);
+            $company->image = $fileNameImage;
+        }
         if($request->company_stamp)
         {
             $exploded_stamp = explode(',', $request->company_stamp);
@@ -121,6 +134,19 @@ class ClientController extends Controller
         if($request->password)
         {
             $client->password = Hash::make($request->password);
+        }
+        if($request->image)
+        {
+            $exploded_image = explode(',', $request->image);
+            $decoded_image = base64_decode($exploded_image[1]);
+            if (str_contains($exploded_image[0], 'jpeg'))
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+            $fileNameImage = Str::random() . '.' . $extension;
+            $pathImage = public_path() . '/client_images/' . $fileNameImage;
+            file_put_contents($pathImage, $decoded_image);
+            $client->image = $fileNameImage;
         }
         $client->save();
         //Delete User Categories

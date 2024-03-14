@@ -113,6 +113,7 @@ Route::middleware('auth:sanctum')->delete('/delete-client-invoice/{id}', [Client
 Route::middleware('auth:sanctum')->post('/status-change-client-invoice', [ClientInvoiceController::class, 'statusChange']);
 Route::middleware('auth:sanctum')->post('/attach-payment-proof-client-invoice', [ClientInvoiceController::class, 'attachPaymentProof']);
 Route::middleware('auth:sanctum')->get('/get-pending-approval-invoices', [ClientInvoiceController::class, 'getPendindApprovalinvoices']);
+Route::middleware('auth:sanctum')->get('/get-pending-approval-and-paid-invoices', [ClientInvoiceController::class, 'getPendingApprovalAndPaidInvoices']);
 //order routes
 Route::middleware('auth:sanctum')->get('/orders', [OrderController::class, 'getOrders']);
 Route::middleware('auth:sanctum')->post('/create-order', [OrderController::class, 'createOrder']);
