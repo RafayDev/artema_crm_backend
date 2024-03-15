@@ -190,7 +190,7 @@
             <tr>
                 <td>#</td>
                 <td>Date</td>
-                <td>Product or Service</td>
+                <td>Product Name</td>
                 <td>SKU</td>
                 <td>Qty</td>
                 <td>Rate</td>
@@ -199,7 +199,7 @@
             @foreach($client_invoice_products as $invoice_product)
             <tr>
                 <td style="font-weight:light;">{{$loop->iteration}}</td>
-                <td style="font-weight:light;"></td>
+                <td style="font-weight:light;">{{$client_invoice->created_at->format('d-m-Y')}}</td>
                 <td style="font-weight:light;">
                     {{$invoice_product->product->category->category_name}}<br>{{$invoice_product->product->product_name}}
                 </td>

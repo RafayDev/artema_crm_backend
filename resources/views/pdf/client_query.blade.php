@@ -199,7 +199,7 @@
             @foreach($queryProducts as $query_product)
             <tr>
                 <td style="font-weight:light;">{{$loop->iteration}}</td>
-                <td style="font-weight:light;"></td>
+                <td style="font-weight:light;">{{$query->created_at->format('d-m-Y')}}</td>
                 <td style="font-weight:light;">{{$query_product->product->category->category_name}}<br>{{$query_product->product->product_name}}</td>
                 <td style="font-weight:light;">{{$query_product->sku}}</td>
                 <td style="font-weight:light;">{{$query_product->quantity}}</td>
