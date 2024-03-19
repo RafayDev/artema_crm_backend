@@ -138,7 +138,14 @@
 
 <body>
     <div style="padding:10px">
-        <h2 style="color:#0077c5">INVOICE</h2>
+        <h2 style="color:#0077c5">
+        <!-- INVOICE -->
+        @if($client_invoice->client_query_id == 0)
+        QUOTAION
+        @else
+        INVOICE
+        @endif
+    </h2>
         <div style="margin-top:0px">
             <table class="header-table">
                 <tr>
