@@ -138,7 +138,7 @@
 
 <body>
     <div style="padding:10px">
-        <h2 style="color:#0077c5">
+        <h2 style="color:#0077c5; text-align:center;">
         <!-- INVOICE -->
         @if($client_invoice->client_query_id == 0)
         QUOTAION
