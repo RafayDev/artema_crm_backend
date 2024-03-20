@@ -148,10 +148,15 @@ class ClientInvoiceController extends Controller
     }
     public function getPendingApprovalAndPaidInvoices(){
         $user = auth()->user();
-            $client_invoices = ClientInvoice::with('user.company')->where('user_id',$user->id)->where('status','pending-approval')->orWhere('status','paid')->orderBy('id', 'desc')->get();
-            return response()->json([
-                'client_invoices' => $client_invoices
-            ], 200);
+        $client_invoices = ClientInvoice::with('user.company')
+            ->where('user_id', $user->id)
+            ->whereIn('status', ['pending-approval', 'paid'])
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return response()->json([
+            'client_invoices' => $client_invoices
+        ], 200);
     }
     public function viewClientInvoice($id)
     {
