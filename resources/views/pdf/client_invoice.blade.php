@@ -137,11 +137,19 @@
 </head>
 
 <body>
+    @php
+    $name = '';
+    @if($client_invoice->client_query_id == 0)
+    $name = Quotation
+    @else
+    $name = Invoice
+    @endif
+    @endphp
     <div style="padding:10px">
         <h2 style="color:#0077c5; text-align:center;">
         <!-- INVOICE -->
         @if($client_invoice->client_query_id == 0)
-        QUOTAION
+        QUOTATION
         @else
         INVOICE
         @endif
@@ -186,9 +194,9 @@
         </table>
         <hr style="border-top: 1px solid #bbb; margin-top:40px;margin-bottom:30px;">
         <div style="font-size: 12px; font-weight: light; margin-bottom:30px;">
-            <b> Invoice details</b><br>
-            Invoice no.: {{$client_invoice->id}}<br>
-            Invoice date: {{$client_invoice->created_at->format('d-m-Y')}}<br>
+            <b> {{$name}} details</b><br>
+            {{$name}} no.: {{$client_invoice->id}}<br>
+            {{$name}} date: {{$client_invoice->created_at->format('d-m-Y')}}<br>
             Due date: {{$client_invoice->due_date}}
         </div>
     </div>
