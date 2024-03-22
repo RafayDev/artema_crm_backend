@@ -141,10 +141,10 @@
     $name = '';
     if($client_invoice->client_query_id == 0)
     {
-    $name = Quotation;
+    $name = 'Quotation';
     }
     else{
-    $name = Invoice;
+    $name = 'Invoice';
     }
     @endphp
     <div style="padding:10px">
