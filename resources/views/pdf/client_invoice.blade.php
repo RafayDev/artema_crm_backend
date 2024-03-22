@@ -139,11 +139,13 @@
 <body>
     @php
     $name = '';
-    @if($client_invoice->client_query_id == 0)
-    $name = Quotation
-    @else
-    $name = Invoice
-    @endif
+    if($client_invoice->client_query_id == 0)
+    {
+    $name = Quotation;
+    }
+    else{
+    $name = Invoice;
+    }
     @endphp
     <div style="padding:10px">
         <h2 style="color:#0077c5; text-align:center;">
