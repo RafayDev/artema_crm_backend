@@ -8,7 +8,6 @@ use App\Models\ReceiptProduct;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Cart;
-use App\Models\CartProduct;
 
 class ReceiptController extends Controller
 {
