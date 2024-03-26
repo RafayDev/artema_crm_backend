@@ -34,8 +34,7 @@ class ReceiptController extends Controller
         $receipt->total = $request->total;
         $receipt->company_id = $user->company_id;
         $receipt->save();
-        $cart = Cart::where('user_id', $user->id)->first();
-        $cartProducts = CartProduct::where('cart_id', $cart->id)->get();
+        $cartProducts = Cart::where('user_id', $user->id)->get();
         foreach ($cartProducts as $cartProduct) {
             $receiptProduct = new ReceiptProduct();
             $receiptProduct->receipt_id = $receipt->id;
@@ -47,6 +46,7 @@ class ReceiptController extends Controller
             $receiptProduct->size = $cartProduct->size;
             $receiptProduct->total = $cartProduct->price * $cartProduct->quantity;
             $receiptProduct->save();
+            $cartProduct->delete();
         }
         return response()->json($receipt);
     }
