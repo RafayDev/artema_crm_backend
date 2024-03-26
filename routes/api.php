@@ -17,6 +17,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\ReceiptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,3 +134,7 @@ Route::middleware('auth:sanctum')->get('/group/{id}', [GroupController::class, '
 Route::middleware('auth:sanctum')->get('/group-users/{id}', [GroupController::class, 'getGroupUsers']);
 Route::middleware('auth:sanctum')->post('/add-group-users', [GroupController::class, 'addGroupUsers']);
 Route::middleware('auth:sanctum')->delete('/delete-group-user/{id}', [GroupController::class, 'deleteGroupUser']);
+//receipt routes
+Route::middleware('auth:sanctum')->get('/receipts', [ReceiptController::class, 'getReceipts']);
+Route::middleware('auth:sanctum')->post('/add-receipt', [ReceiptController::class, 'addReceipt']);
+Route::middleware('auth:sanctum')->delete('/delete-receipt/{id}', [ReceiptController::class, 'deleteReceipt']);
