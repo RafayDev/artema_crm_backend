@@ -236,8 +236,10 @@
                         <p style="font-size: 18px;">Note to customer</p>
                         <p style="font-size: 12px;">Thank you for considering {{$company->company_name}} to meet
                             your surgical instruments needs!</p>
-                            <p style="font-size: 12px;">you can pay through this link <b><a href="{{$client_invoice->payment_link}}">{{$client_invoice->payment_link}}</a></b>
+                            @if($client_invoice->payment_link != null || $client_invoice->payment_link != '')
+                            <p style="font-size: 12px;">you can pay through this link <b><a href="{{$client_invoice->payment_link}}">{{$client_invoice->payment_link}}</a></b>   
                         </p>
+                        @endif
                         </div </div>
                         <table class="table-header" style="font-weight: light;">
                             <td class="column6">

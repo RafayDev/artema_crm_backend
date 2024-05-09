@@ -221,8 +221,10 @@
                         <p style="font-size: 18px;">Note to customer</p>
                         <p style="font-size: 12px;">Thank you for considering Artema Medical Group to meet
                             your surgical instruments needs!</p>
+                            @if($invoice->payment_link != null || $invoice->payment_link != '')
                             <p style="font-size: 12px;">you can pay through this link <b><a href="{{$invoice->payment_link}}">{{$invoice->payment_link}}</a></b>
                         </p>
+                        @endif
                         <table class="table-header" style="font-weight: light; padding:10px">
                             <td class="column6">
                                 <img src="./img/sba.jpg" alt="Gryphon Medical Solutions LLC" style="width: 50%;">
