@@ -138,7 +138,7 @@
 
 <body>
     <div style="padding:10px">
-        <h2 style="color:#f68b1e">INVOICE</h2>
+        <h2 style="color:#f68b1e; text-align:center;">INVOICE</h2>
         <div style="margin-top:20px">
             <table class="header-table">
                 <tr>
