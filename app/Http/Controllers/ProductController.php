@@ -128,6 +128,13 @@ class ProductController extends Controller
             'products' => $products
         ], 200);
     }
+    public function getProductsBySubCategorySlug($slug){
+        $subCategory = SubCategory::where('sub_category_slug', $slug)->first();
+        $products = Product::with('productSizes')->where('sub_category_id', $subCategory->id)->orderBy('id', 'desc')->paginate(24);
+        return response()->json([
+            'products' => $products
+        ], 200);
+    }
     public function searchProducts(Request $request)
     {
         $search = $request->search;

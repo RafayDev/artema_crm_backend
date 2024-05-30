@@ -131,4 +131,13 @@ class CategoryController extends Controller
             'category' => $category
         ], 200);
     }
+    public function getSubCategoriesByCategorySlug($slug)
+    {
+        $category = Category::where('category_slug', $slug)->first();
+        $subcategories = CategorySubCategory::with('subCategory')->where('category_id', $category->id)->get();
+        return response()->json([
+            'subcategories' => $subcategories,
+            'category' => $category
+        ], 200);
+    }
 }
