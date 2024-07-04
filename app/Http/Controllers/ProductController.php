@@ -143,13 +143,13 @@ class ProductController extends Controller
         }
     
         // Search by product name
-        $productsByName = Product::with('productSizes')
+        $productsByName = Product::with('productSizes','category','subCategory')
             ->where('product_name', 'like', '%' . $search . '%')
             ->get();
     
         // If no products found by name, search by SKU
         if ($productsByName->isEmpty()) {
-            $products = Product::with('productSizes')
+            $products = Product::with('productSizes','category','subCategory')
                 ->whereHas('productSizes', function ($query) use ($search) {
                     $query->where('product_sku', 'like', '%' . $search . '%');
                 })
