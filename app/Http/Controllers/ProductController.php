@@ -114,6 +114,13 @@ class ProductController extends Controller
             'product' => $product
         ], 200);
     }
+    public function getProductBySlug($slug)
+    {
+        $product = Product::with('productSizes')->where('product_slug', $slug)->first();
+        return response()->json([
+            'product' => $product
+        ], 200);
+    }
     public function getProductsBySubCategoryIdNoAuth($id)
     {
         $products = Product::with('productSizes')->where('sub_category_id', $id)->paginate(24);

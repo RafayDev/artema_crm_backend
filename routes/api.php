@@ -60,6 +60,7 @@ Route::middleware('auth:sanctum')->post('/add-product', [ProductController::clas
 Route::middleware('auth:sanctum')->post('/edit-product', [ProductController::class, 'editProduct']);
 Route::middleware('auth:sanctum')->delete('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('/product/{id}', [ProductController::class, 'getProductById']);
+Route::get('/get-product-by-slug/{slug}', [ProductController::class, 'getProductBySlug']);
 Route::middleware('auth:sanctum')->get('/get-product-by-subcategory/{id}', [ProductController::class, 'getProductsBySubCategoryId']);
 Route::get('/get-product-by-subcategory-no-auth/{id}', [ProductController::class, 'getProductsBySubCategoryIdNoAuth']);
 Route::get('/get-product-by-subcategory-slug-no-auth/{slug}', [ProductController::class, 'getProductsBySubCategorySlug']);
