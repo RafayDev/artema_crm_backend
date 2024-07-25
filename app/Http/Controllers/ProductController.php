@@ -116,7 +116,7 @@ class ProductController extends Controller
     }
     public function getProductBySlug($slug)
     {
-        $product = Product::with('productSizes')->where('product_slug', $slug)->first();
+        $product = Product::with('productSizes')->where('slug', $slug)->first();
         return response()->json([
             'product' => $product
         ], 200);
