@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\CategorySubCategory;
 use App\Models\UserCategory;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -121,6 +122,20 @@ class CategoryController extends Controller
         return response()->json([
             'categories' => $categories
         ], 200);
+    }
+    public function getProductSlugsbyUserId($id)
+    {
+        $user = User::find($id);
+        $user_categories = $user->categories;
+        $products = Product::whereIn('category_id', $user_categories->pluck('id'))->get();
+        $product_slugs = [];
+        foreach ($products as $product) {
+            array_push($product_slugs, $product->slug);
+        }
+        return response ()->json([
+            'product_slugs' => $product_slugs
+        ]);
+
     }
     public function getSubCategoriesByCategoryIdNoAuth($id)
     {

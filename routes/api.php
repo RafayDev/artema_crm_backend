@@ -65,6 +65,7 @@ Route::middleware('auth:sanctum')->get('/get-product-by-subcategory/{id}', [Prod
 Route::get('/get-product-by-subcategory-no-auth/{id}', [ProductController::class, 'getProductsBySubCategoryIdNoAuth']);
 Route::get('/get-product-by-subcategory-slug-no-auth/{slug}', [ProductController::class, 'getProductsBySubCategorySlug']);
 Route::post('/search-products', [ProductController::class, 'searchProducts']);
+Route::get('get-products-slug-by-user-id/{id}', [CategoryController::class, 'getProductSlugsbyUserId']);
 //client routes
 Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'getClients']);
 Route::middleware('auth:sanctum')->post('/add-client', [ClientController::class, 'addClient']);
